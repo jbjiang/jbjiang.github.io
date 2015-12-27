@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>机器学习总结 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="机器学习相关知识写在前面的话
+保持怀疑的态度（在全新的数据集上测试分类器）
+天下没有免费的午餐（没有适用的最好学习方法，具体问题具体对待）
+正确对待缺失值，不同参数的设置可能会对结果产生不同的影响
+不同算法都有对应的假设
+数据挖掘的结果总会误导人，保持求真的态度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习总结">
+<meta property="og:url" content="http://needpp.com/2014/12/17/机器学习总结/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="机器学习相关知识写在前面的话
+保持怀疑的态度（在全新的数据集上测试分类器）
+天下没有免费的午餐（没有适用的最好学习方法，具体问题具体对待）
+正确对待缺失值，不同参数的设置可能会对结果产生不同的影响
+不同算法都有对应的假设
+数据挖掘的结果总会误导人，保持求真的态度">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/e2ca0700-85f1-11e4-b12c-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/ed891c6e-85f1-11e4-97cc-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/f759fb82-85f1-11e4-9842-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/0449252b-85f2-11e4-b764-c5df8d42c2d5.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/0c67a1f0-85f2-11e4-abc8-c5df8d42c2d5.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/18ad3b97-85f2-11e4-955f-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/250b0b21-85f2-11e4-9768-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/31031f3a-85f2-11e4-aa8f-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/31ef7970-85f2-11e4-a433-c5df8d42c2d5.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/413520c5-85f2-11e4-a53b-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/4ca0b3b0-85f2-11e4-a635-c5df8d42c2d5.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/5421055c-85f2-11e4-8cd2-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/5d9005d4-85f2-11e4-b24e-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/687c18ae-85f2-11e4-80a8-c5df8d42c2d5.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/71edbf4f-85f2-11e4-a266-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/89ca134f-85f2-11e4-89eb-c5df8d42c2d5.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/94cda261-85f2-11e4-841f-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/9ff7aa63-85f2-11e4-8ddc-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/aa8816e3-85f2-11e4-8f1e-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/b5d07c57-85f2-11e4-be9b-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/be49c080-85f2-11e4-b15a-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/c624139c-85f2-11e4-b898-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/cdc738e3-85f2-11e4-b13b-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/d4fc951c-85f2-11e4-a76c-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/e1d383e1-85f2-11e4-9d46-bd6806c2b4b7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/12/17/e960d675-85f2-11e4-ab3d-bd6806c2b4b7.png">
+<meta property="og:updated_time" content="2015-12-15T14:49:35.990Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习总结">
+<meta name="twitter:description" content="机器学习相关知识写在前面的话
+保持怀疑的态度（在全新的数据集上测试分类器）
+天下没有免费的午餐（没有适用的最好学习方法，具体问题具体对待）
+正确对待缺失值，不同参数的设置可能会对结果产生不同的影响
+不同算法都有对应的假设
+数据挖掘的结果总会误导人，保持求真的态度">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-机器学习总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/17/机器学习总结/" class="article-date">
+  	<time datetime="2014-12-16T16:00:00.000Z" itemprop="datePublished">2014-12-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      机器学习总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ml/">ml</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="机器学习相关知识">机器学习相关知识</h2><h3 id="写在前面的话">写在前面的话</h3><ul>
+<li>保持怀疑的态度（在全新的数据集上测试分类器）</li>
+<li>天下没有免费的午餐（没有适用的最好学习方法，具体问题具体对待）</li>
+<li>正确对待缺失值，不同参数的设置可能会对结果产生不同的影响</li>
+<li>不同算法都有对应的假设</li>
+<li>数据挖掘的结果总会误导人，保持求真的态度</li>
+</ul>
+<a id="more"></a>
+<h3 id="数据类型">数据类型</h3><ul>
+<li>连续型</li>
+<li>离散型</li>
+<li>标称型</li>
+</ul>
+<h3 id="概念">概念</h3><ul>
+<li>离散化</li>
+<li>归一化</li>
+<li>正则化</li>
+</ul>
+<!--more-->
+<h3 id="度量指标">度量指标</h3><ul>
+<li><p>欧几里得距离<br>以$R$为实数域，对于任意一个正整数n，实数的n元组的全体构成了R上的一个n维向量空间，用 $R^n$ 来表示。 $R^n$ 中的元素可以写成 $X=(x_1,x_2,…x_n)$ .<br>欧式范数定义 $R^n$ 上的距离函数为: </p>
+<p>$$d(x,y)=\Vert x-y \Vert =\sqrt{\displaystyle \sum_{i=1}^n(x_i-y_i)^2}$$</p>
+</li>
+</ul>
+<p>可以使用上面的公式来度量n维空间中任意两点之间的距离。这也是在推荐系统中度量样本点的相似程度的一种方式。</p>
+<ul>
+<li><p>余弦相似度<br>余弦相似度是基于n维空间向量的。所谓向量就是在向量的空间中的坐标原点指向该空间某一个点的度量表示。n维空间由n条互相正交的基向量构成，彼此无关，也是构成整个向量空间的基础结构。我们能够比较直观理解的是三维向量，超过三维就比较难以理解了。<br><strong>点积</strong>   对于任意两个向量 x、y 点积<x,y>定义为</x,y></p>
+<p>$$<x,y>=\displaystyle\sum_{i=1}^nx_iy_i$$</x,y></p>
+</li>
+</ul>
+<p><strong>向量长度</strong>   定义为</p>
+<p> $$\Vert x \Vert =\sqrt{<x,x>}=\sqrt{\displaystyle \sum_{i=1}^n(x_i)^2}$$</x,x></p>
+<p><strong>余弦相似度</strong>  定义为</p>
+<p> $$cos(\theta)= \frac{ A \bullet B}{\Vert A \Vert \Vert B \Vert}=\frac{\displaystyle \sum_{i=1}^nA_i \times B<em>i}{\sqrt{\displaystyle \sum</em>{i=1}^n(A<em>i)^2 \times \displaystyle \sum</em>{i=1}^n(B_i)^2}}$$<br>越相似二者夹角越小越趋向于1，若两向量朝逆方向延伸，则度量值趋向于-1 可以明显的从数值中看到趋势。</p>
+<ul>
+<li>皮尔逊距离</li>
+</ul>
+<h3 id="模型评估">模型评估</h3><p>模型评估帮助我们找到最佳的模型来代表给定的数据集并且能够选择出的模型在未来的未知数据中取得较好的效果。在原来的训练集合上来评估一个模型的好坏是不太合适的，因为这样可能会造成过拟合的现象，也就是说可能会因为训练集某些隐含的因子使得这个分类模型有很好的准确率，但是当我们应用这个模型到新的数据集上就不一定有同样的结果。这就是过拟合的现象，没有在新的数据集上获得同样的效果（模型的泛化能力）。所以我们需要引入没有污染过（任何经过训练的数据我们称为被污染过的数据）进行测试。这里有两种方式进行评估。</p>
+<ul>
+<li><strong>Hold-out</strong>（这种方式针对大的数据集，把数据分成三份）<ul>
+<li>训练集  构建模型</li>
+<li>验证集  细化模型参数、选择最佳模型</li>
+<li>测试集  <code>衡量模型的性能 这部分数据不参与前面两个步骤</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Cross-Validation</strong> 针对数据较少，可以采用交叉验证的方式取得一个比较稳定的平均值。常用的<code>k-fold</code> 也是就是所谓的k折交叉验证方式，把数据集合分成k份，每次选择其中一份作为测试集其余的作为训练集，重复k次，最后取得每次结果的平均值。</li>
+</ul>
+<h4 id="分类评估">分类评估</h4><p><strong>Confusion Matrix</strong></p>
+<p>混淆矩阵用来描述正确分类和错误分类的各个指标。下面是一个二分类问题混淆矩阵的实例。<br><img src="http://needpp.qiniudn.com/2014/12/17/e2ca0700-85f1-11e4-b12c-bd6806c2b4b7.png" alt=""></p>
+<ul>
+<li>Accuracy准确率 : the proportion of the total number of predictions that were correct. 准确率</li>
+<li>Positive Predictive Value or Precision正确率 : the proportion of positive cases that were correctly identified. </li>
+<li>Negative Predictive Value : the proportion of negative cases that were correctly identified.</li>
+<li>Sensitivity or Recall敏感度 召回率: the proportion of actual positive cases which are correctly identified. </li>
+<li>Specificity 特异性: the proportion of actual negative cases which are correctly identified. 特异性</li>
+</ul>
+<p><strong>ROC Chart</strong></p>
+<h4 id="回归评估">回归评估</h4><p><strong>Root Mean Squared Error</strong><br>均方差用来衡量回归模型中的错误率，注意不同模型计算时需要注意度量单位的统一。</p>
+<p> $$RMSE=\sqrt{\frac{\displaystyle \sum_{i=1}^n(p_i-a_i)^2}{n}}$$<br> $$a=actual \ target$$<br> $$p=predicted \ target$$</p>
+<p><strong>Relative Squared Error</strong></p>
+<p> $$RSE=\frac{\displaystyle \sum_{i=1}^n(p_i-a<em>i)^2}{\displaystyle \sum</em>{i=1}^n(\overline a-a_i)^2}$$</p>
+<p><strong>Mean Absolute Error</strong></p>
+<p> $$MAE=\frac{\displaystyle \sum_{i=1}^n \vert p_i-a_i \vert }{n}$$</p>
+<p><strong>Relative Absolute Error</strong></p>
+<p> $$RAE=\frac{\displaystyle \sum_{i=1}^n \vert p_i-a<em>i \vert }{\displaystyle \sum</em>{i=1}^n \vert \overline a-a_i \vert }$$</p>
+<p><strong>Coefficient of Determination</strong></p>
+<h3 id="优化方法">优化方法</h3><ul>
+<li><p>最小二乘法</p>
+</li>
+<li><p>梯度上升（下降）寻求最大（最小）值<br>梯度上升法基于的思想是：要找到函数的最值最好的方法就是沿着函数的地图方向进行。从初始点进行最值寻找的过程中需要计算当期点的梯度，并且沿着这个方向移动，具体移动的步伐通过步长来设定。到达下一个点之后重新计算梯度不迭代直到满足条件。（寻找到最优值或者到达误差允许的范围内。）</p>
+</li>
+<li><p>随机梯度<br>随机梯度在针对大数据集的时候显得特别有用，虽然损失了一定的精度，但是换来了较快的收敛速度，达到一个与全局最优较近位置的点。它是针对每个点选择盖点最优的方向进行移动，不一定要对整个数据集集合操作就可能到达收敛了。而BGD（批处理梯度下降）在每一次梯度的更新操作中需要对整个数据集进行计算，在大数据处理过程中无疑增大了计算量。</p>
+</li>
+<li><p>最大似然估计<br>风刮的</p>
+</li>
+</ul>
+<h3 id="常用算法（建模）">常用算法（建模）</h3><h4 id="分类">分类</h4><p>分类问题实际是一类监督学习问题，根据训练数据的类标记来引导分类器选择合适的参数，较好的拟合样本空间中的数据，并且能够对未来的数据有一定的预测能力（泛化能力）。分类算法大致可以按照如下四种方式进行分类。</p>
+<h5 id="频率表">频率表</h5><h5 id="ZeroR">ZeroR</h5><p>Weka中提供了ZeroR算法，是最简单的分类器。主要思想是按照类中大多数数据所属的类别类进行分类。基本上没有使用认为关于ml的理论。它的作用就是给其他分类器提供一个模型的基线，衡量一个算法的性能。换句话说我们用的模型再怎么不行也不能比这个baseline还要低吧。<br><code>构造目标的频率表，选择频率最大的类别作为目标的预测值</code></p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/ed891c6e-85f1-11e4-97cc-bd6806c2b4b7.png" alt=""></p>
+<p>下面是ZeroR的混淆矩阵，我们可以看到这个算法的用途只是在于提供一个baseline而已。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/f759fb82-85f1-11e4-9842-bd6806c2b4b7.png" alt=""></p>
+<h5 id="OneR">OneR</h5><p>OneR是“One Rule”的简称，也就是按照一个规则进行分类。它会针对每个属性上进行测试对目标进行分类，然后从每个属性中得到的规则中选择最小误分类的规则作为最终的分类模型。比如下面的例子很好的说明上述的描述。<br><code>一个较小的总体分类误差意味着对正确分类提供了更多的贡献。</code></p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/0449252b-85f2-11e4-b764-c5df8d42c2d5.png" alt=""></p>
+<p>这是这个分类问题的混淆矩阵</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/0c67a1f0-85f2-11e4-abc8-c5df8d42c2d5.png" alt=""></p>
+<h5 id="Naive_Bayesian">Naive Bayesian</h5><p>贝叶斯分类依托于贝叶斯理论。基于先验概率的理解，根据样本数据的统计特征得出后验概率。是一种非常简单而且有效的分类方法。在数据较少的情况下也依然有效，同时也可以处理多类分类问题。缺点在于对输入数据的准备方式较为敏感。</p>
+<blockquote>
+<p>补充贝叶斯公式、贝叶斯理论<br>to be continue…  、 </p>
+</blockquote>
+<p> 朴素贝叶斯的前提条件是:假设给定目标值时属性之间彼此相互独立。然后应用贝叶斯公式通过 $ P(c) ,P(x) ,P(x/c)$ 计算出后验概率$P(c/x)$。虽然我们不能确定给定的属性之间是否真的相互独立，但是在这么一个假设的前提下，朴素贝叶斯分类确实取得了非常不错的效果。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/18ad3b97-85f2-11e4-955f-bd6806c2b4b7.png" alt=""></p>
+<p>下面举个栗子，看看贝叶斯的分类机制。<br>给定一个属性集合计算它属于其中某个类别的一个后验概率，然后选择概率最大的那个类别作为它的分类。需要注意的一点就是由于贝叶斯针对多个变量的连乘操作，我们在操作中需要进行加一避免0的出现。比如途中当outlook为overcast的时候（Play Golf=no)。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/250b0b21-85f2-11e4-9768-bd6806c2b4b7.png" alt=""></p>
+<p> 上面是对离散型的分类，处理数值型预测任务改怎么处理呢？<br> 我们需要把数值型数据转换成离散型，通常是假定正态分布然后将其离散化.然后构造频率表再使用贝叶斯理论。</p>
+<ul>
+<li><strong>关于正态分布</strong></li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/31031f3a-85f2-11e4-aa8f-bd6806c2b4b7.png" alt=""></p>
+<p><strong>下面举个例子说明： 数值型离散化 使用贝叶斯</strong></p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/31ef7970-85f2-11e4-a433-c5df8d42c2d5.png" alt=""></p>
+<h5 id="Decision_Tree">Decision Tree</h5><p>决策树可用来构建分类和回归模型，能够处理离散型和连续型的数据。分类的过程就是不断的把数据集合按照属性分成一个个较小的子集，属性的选择可用比如<a href="">信息增益</a>等方式,对每个选择的属性做一次判断然后将数据归入到特定的子集中不断的进行直到分类完全。这个用来做分析判断的属性所在的节点叫做决策节点也是最终形成树的中间节点。最后形成的树的叶子节点表示纯类。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/413520c5-85f2-11e4-a53b-bd6806c2b4b7.png" alt=""></p>
+<blockquote>
+<p>构造决策树的核心算法来自 J.R.Quinlan发表的ID3算法，ID3使用的是自顶向下的贪婪算法，不经过回退操作在整个可能的空间中进行搜索.ID3使用<a href="">熵和信息增益</a>来构建决策树。   </p>
+</blockquote>
+<ul>
+<li><p><strong>熵</strong></p>
+<p>ID3使用熵（平均信息量）来计算样本间的同质性。即如果样本完全同质则信息熵为0，如果样本均匀包含各种可能性，则熵为1.熵在某种程度上表达了不确定性的多少。不确定性越大信息熵越大。<a href="">数学之美</a>一书中阐述过香农的信息熵理论。</p>
+</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/4ca0b3b0-85f2-11e4-a635-c5df8d42c2d5.png" alt=""></p>
+<p>使用id3进行构建决策树时候，需要计算两类熵。<br>a) 单个属性的信息熵</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/5421055c-85f2-11e4-8cd2-bd6806c2b4b7.png" alt=""></p>
+<p>b) 多个属性的信息熵</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/5d9005d4-85f2-11e4-b24e-bd6806c2b4b7.png" alt=""></p>
+<ul>
+<li><p><strong>信息增益</strong></p>
+<p>信息增益是基于在针对数据集上一个属性上分类之后熵的减少来定义的。构造决策树的过程实际上就是不断的寻找分裂属性并且返回最大的信息增益值，这意味着分裂后的分支所在的集合信息熵越小，它所在的分支越纯，从而达到了分类的效果。下面是计算步骤1-5。</p>
+<p>1) 计算分类目标的熵</p>
+</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/687c18ae-85f2-11e4-80a8-c5df8d42c2d5.png" alt=""></p>
+<p> 2) 将数据集按照不同的属性划分并且计算他们分裂之后的熵和<strong>信息增益</strong>。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/71edbf4f-85f2-11e4-a266-bd6806c2b4b7.png" alt=""></p>
+<p> 3) 选择最大的信息增益作为决策节点。这里选择的是<code>outlook</code>.</p>
+<p> 4)当摸个分支的熵为0的时候则表示已经分类完成，直接作为叶子节点。否则的话继续选择属性进行分裂。</p>
+<p> 5) 递归的运行id3算法直到数据集被完全划分而且没有决策节点。</p>
+<ul>
+<li><strong>避免过拟合</strong><br><a href="http://thinkml.sinaapp.com/binning.htm" target="_blank" rel="external">binning</a><br><a href="http://thinkml.sinaapp.com/decision_tree_overfitting.htm" target="_blank" rel="external">avoiding overfitting</a><br><a href="http://thinkml.sinaapp.com/decision_tree_super.htm" target="_blank" rel="external">super attributes</a><br><a href="http://thinkml.sinaapp.com/missing_values.htm" target="_blank" rel="external">missing values</a></li>
+</ul>
+<h5 id="协方差矩阵">协方差矩阵</h5><h5 id="Linear_Discriminant_Analysis">Linear Discriminant Analysis</h5><p>线性判别分析被R. A. Fisher在1936年首次作为一种分类方法提出，具有与复杂方法相当的精确度。</p>
+<p>LDA基于这样一种思想，就是在预测变量的线性组合空间中搜索最佳的用来分开两个类（target）的线性组合。Finsher定义了下面的 <em>代价函数</em> 。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/89ca134f-85f2-11e4-89eb-c5df8d42c2d5.png" alt=""></p>
+<h5 id="Logistic_Regression">Logistic Regression</h5><p>逻辑回归产生一条逻辑曲线将值映射到<code>[0,1]</code>之间，逻辑回归于线性回归有点类似，不过这条曲线使用的是目标变量的<code>可能性</code>的自然对数而不是<code>概率</code>来构造。而且预测变量不必满足正态分布或在同一个组内要求的相同方差。 逻辑回归不仅可以处理数值型数据而且可以处理分类型变量.</p>
+<p>逻辑回归使用sigmoid函数作为回归分类器，我们通过在每个特征上乘以一个回归系数，然后把所有的结果相加得到一个总和带入到sigmoid这个阶跃函数中，进而得到一个0~1之间的实数，我们把大于0.5的归入到1类，小于0.5的归入到0类。所以逻辑回归也可以被看成是一个概率估计分类器。</p>
+<p>那么最佳的回归系数怎么确定呢？这就需要采用最优化的方法来进行对参数的确定了，拟合训练数据学习出最佳的回归系数就是逻辑回归训练的任务了。</p>
+<blockquote>
+<p>这里让人疑问的是可能性和概率有哪里不同吗？</p>
+<p>优点：计算代价不高，易于理解和实现<br>缺点： 容易欠拟合，分类精度可能不高<br>数据类型：数值型和标称型</p>
+</blockquote>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/94cda261-85f2-11e4-841f-bd6806c2b4b7.png" alt=""></p>
+<p>图中等式可以等价于下面的式子：</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/9ff7aa63-85f2-11e4-8ddc-bd6806c2b4b7.png" alt=""></p>
+<p>我们可以使用类似于线性回归中的<code>最小二乘法</code>来确定代价函数中的参数。在逻辑回归中我们采用的是<code>最大似然估计</code>来确定这些参数。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/aa8816e3-85f2-11e4-8f1e-bd6806c2b4b7.png" alt=""></p>
+<h5 id="相似函数">相似函数</h5><h5 id="K_Nearest_Neighbors">K Nearest Neighbors</h5><p>K近邻是比较简答基于相似度来分类的一个算法，核心思想就是根据距离来寻找与待分类点的k个邻居，然后每个对应邻居节点都有自己的类标号，我们选择这k个邻居中类标号数目最多的作为待分类节点的标签，类似于一种投票机制。k近邻是一种lazy算法。处理待分类节点的时候才去寻找他对应的邻居。</p>
+<ul>
+<li>距离度量公式</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/b5d07c57-85f2-11e4-be9b-bd6806c2b4b7.png" alt=""></p>
+<p>我们可以看到上面的公式主要是针对<code>连续型变量</code>的,在处理分类变量的时候我们需要采用<code>Hamming distance</code>。当数据集中同时存在s数值型和分类型变量的时候，它同时带来了将数值变量映射到<code>[0,1]</code>的<a href="">标准化</a>问题。<br>下面是计算<code>Hamming distance</code>距离的表达式。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/be49c080-85f2-11e4-b15a-bd6806c2b4b7.png" alt=""></p>
+<ul>
+<li><p>K的选择<br>一般选择k的范围为<code>[3,10]</code>当然只是个别的经验,通过交叉验证的方式可以帮助我们选择合适的<code>k</code>值并通过独立的验证集来验证这个k是否合适,这对分类器的分类效果至关重要。</p>
+</li>
+<li><p>举个栗子<br>在下面的栗子中是一个信用卡违约的一个预测问题，有两个属性age和loan，都是数值型变量。目标变量是是否违约。</p>
+</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/c624139c-85f2-11e4-b898-bd6806c2b4b7.png" alt=""></p>
+<p>给定一个样本<code>(age=48,loan=142,000)</code>用来判断他是否会违约，我们选择和他最近的3个邻居，并选择邻居中类标记数目最多的标记来作为该样本的预测值。在这个例子中我们得出<code>default=Y</code></p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/cdc738e3-85f2-11e4-b13b-bd6806c2b4b7.png" alt=""></p>
+<ul>
+<li>标准化距离<br>当样本中的数据的度量单位不一致的时候，使用这些距离度量公式的时候有一个非常大的弊端，就是量纲较大的属性产生的影响会显得比较大很肯能掩盖掉了一些很重要的属性的影响，为此我们需要对数据进行标准化。使他们处于同一个水平进行比较和度量。对于标准化后的数据进行训练，不能对新来的未知数据的预测有较好的鲁棒性。下图是<em>标准化转换计算公式</em></li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/d4fc951c-85f2-11e4-a76c-bd6806c2b4b7.png" alt=""></p>
+<h5 id="其他">其他</h5><p>#####Artificial Neural Network<br>人工神经网络是基于生物神经网络的一个系统。模仿大脑内的神经元之间的触发方式。到达临界条件才会激活或者抑制。人工神经网络（ANN）由三个部分组成：输入层、隐含层、输出层。</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/e1d383e1-85f2-11e4-9d46-bd6806c2b4b7.png" alt=""></p>
+<p>传递方式 -前向传播 后向反馈</p>
+<p><img src="http://needpp.qiniudn.com/2014/12/17/e960d675-85f2-11e4-ab3d-bd6806c2b4b7.png" alt=""></p>
+<h5 id="Support_Vector_Machine">Support Vector Machine</h5><h4 id="回归">回归</h4><h4 id="聚类">聚类</h4><h4 id="关联规则">关联规则</h4><h3 id="特征选择">特征选择</h3><ul>
+<li>概念</li>
+</ul>
+<h3 id="维度处理">维度处理</h3><ul>
+<li>PCA主成分分析</li>
+<li>SVD奇异值分解</li>
+</ul>
+<h3 id="附录-数据挖掘概览">附录-数据挖掘概览</h3><p><a href="http://chem-eng.utoronto.ca/~datamining/dmc/data_mining_map.htm" target="_blank" rel="external">Data mining Map</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/17/关于套牌车数据分布式存储方案/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          关于套牌车数据分布式存储方案
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/11/Weka模型导出-属性选择/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Weka模型导出-属性选择</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="机器学习总结" data-title="机器学习总结" data-url="http://needpp.com/2014/12/17/机器学习总结/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

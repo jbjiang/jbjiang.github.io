@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>D3 学习 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="D3 学习笔记D3简介D3全称是Data-Driven Documents数据驱动文档，是一个开源的javascript库，可以用于数据可视化图形的创建，但不仅仅只是这些。可以查看d3帮助文档还有样例演示。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D3 学习">
+<meta property="og:url" content="http://needpp.com/2014/10/21/D3 学习/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="D3 学习笔记D3简介D3全称是Data-Driven Documents数据驱动文档，是一个开源的javascript库，可以用于数据可视化图形的创建，但不仅仅只是这些。可以查看d3帮助文档还有样例演示。">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/21/ccbcb917-58cc-11e4-8aca-ff47119e35e7.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/21/d879df4a-58cc-11e4-91be-2d5a0eff9ed9.png">
+<meta property="og:updated_time" content="2015-12-12T03:09:36.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="D3 学习">
+<meta name="twitter:description" content="D3 学习笔记D3简介D3全称是Data-Driven Documents数据驱动文档，是一个开源的javascript库，可以用于数据可视化图形的创建，但不仅仅只是这些。可以查看d3帮助文档还有样例演示。">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-D3 学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/21/D3 学习/" class="article-date">
+  	<time datetime="2014-10-20T16:00:00.000Z" itemprop="datePublished">2014-10-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      D3 学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3/">d3</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="D3_学习笔记">D3 学习笔记</h3><h4 id="D3简介">D3简介</h4><p>D3全称是Data-Driven Documents数据驱动文档，是一个开源的javascript库，可以用于数据可视化图形的创建，但不仅仅只是这些。可以查看<a href="https://github.com/mbostock/d3/wiki/API-Reference" target="_blank" rel="external">d3帮助文档</a>还有<a href="http://d3js.org/" target="_blank" rel="external">样例演示</a>。</p>
+<a id="more"></a>
+<h4 id="安装D3">安装D3</h4><ol>
+<li>从github上面fork最新版本d3文件，地址在<a href="https://github.com/mbostock/d3/" target="_blank" rel="external">D3源文件</a>。</li>
+<li><p>引用d3.js</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>D3 Test<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"d3/d3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span>&gt;</span>this is a test for d3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="undefined"></span><br><span class="line">		 # we can write code in here...</span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置web服务器<br>d3很多地方使用异步加载的方式，需要从后台服务器取回数据。我们可以采用apache服务器，或者采用python终端配置方案。二者都很简单实。采用python实现的话，只需要切换到项目所在的文件夹，然后再终端执行如下命令即可构建一个简单的web服务器进程。<br><code>ptyhon -m SimpleHTTPServer 8888 &amp;</code><br>其中8888为指定端口，也可单独选择其他端口 末尾的<code>&amp;</code>表示作为后台进程执行，终端关闭之后服务器进程而不会关闭。</p>
+</li>
+<li><p>显示数据</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>D3 Test<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"d3/d3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span>&gt;</span>this is a test for d3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">			<span class="keyword">var</span> dataset;  <span class="comment">//声明全局变量</span></span><br><span class="line">			<span class="comment">// test for d3 select function</span></span><br><span class="line">			d3.select(<span class="string">"body"</span>)</span><br><span class="line">				.append(<span class="string">"p"</span>)</span><br><span class="line">				.text(<span class="string">"this is a append paragraph"</span>);</span><br><span class="line">			<span class="comment">// csv read and we will print the data to console</span></span><br><span class="line">			d3.csv(<span class="string">"test.csv"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,data</span>)</span>&#123;</span><br><span class="line">				<span class="comment">//callback function </span></span><br><span class="line">				<span class="keyword">if</span>(error)&#123;</span><br><span class="line">					<span class="built_in">console</span>.log(error);</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					dataset=data;   <span class="comment">//复制到全局变量</span></span><br><span class="line">					<span class="built_in">console</span>.log(data);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			<span class="comment">//read json</span></span><br><span class="line">			d3.json(<span class="string">"testjson.json"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"hello"</span>);</span><br><span class="line">				<span class="built_in">console</span>.log(json);</span><br><span class="line">			&#125;);</span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>控制台查看</p>
+</li>
+</ol>
+<p><img src="http://needpp.qiniudn.com/2014/10/21/ccbcb917-58cc-11e4-8aca-ff47119e35e7.png" alt=""></p>
+<h4 id="数据绑定">数据绑定</h4><p>上面我们会看到<code>d3.select(&quot;body&quot;).append(&quot;p&quot;).text(&quot;this is a append paragraph&quot;);</code>这么一段，是d3的连缀方法，类似于设计模式中的责任链模式，将处理完后的工作交给责任链条中的下一个环节进行继续处理。<br>绑定数据：参考如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> dataset=[<span class="number">1</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">62</span>,<span class="number">1</span>,<span class="number">23</span>,<span class="number">454</span>,<span class="number">22</span>];</span><br><span class="line"><span class="comment">// test for d3 select function</span></span><br><span class="line">d3.select(<span class="string">"body"</span>)</span><br><span class="line">	.selectAll(<span class="string">"div"</span>)</span><br><span class="line">	.data(dataset)</span><br><span class="line">	.enter()</span><br><span class="line">	.append(<span class="string">"div"</span>)</span><br><span class="line">	.style(<span class="string">"color"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(d&gt;<span class="number">5</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"red"</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">"black"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	.text(<span class="function"><span class="keyword">function</span> (<span class="params">d</span>)</span>&#123;</span><br><span class="line">		<span class="comment">//匿名回调函数 对每个数据执行一次同样的方法 把数据返回给前台</span></span><br><span class="line">		<span class="keyword">return</span> d;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+<p>具体研究d3责任链的过程，先是选择dom节点body，然后选择所有p标签，此时还没有这个标签，于是返回空元素，可以理解为马上创建这个段落（p标签）,在然后的data（dataset）解析并取出数据值，<code>此后的所有方法均会针对每个值执行一次</code>，enter表示创建并绑定新的元素，相当于把数据绑定到了p标签上然后交给下一个方法进行处理，接下来就比较明白了。</p>
+<p><strong>关于匿名函数的问题</strong>,在d3的使用中遇到了很多的匿名函数，就是系统会自动返回一个对应的值给被调用的对象，这个对象接收到这个值之后可以进行相应的处理，比如上面的d参数，实际上是每个元素的值，绑定之后以这种方式返回并以匿名函数的方式显示到text中，另外针对多个值的变量，这里面维护了一个索引值i，我们可以通过这个i来定位当前操作的是哪一个元素。如下所示,其中的i为数组下标索引。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	<span class="keyword">var</span> dataset=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>]</span><br><span class="line">	<span class="keyword">var</span> w=<span class="number">960</span>;</span><br><span class="line">	<span class="keyword">var</span> h=<span class="number">325</span>;</span><br><span class="line">	<span class="keyword">var</span> svg=d3.select(<span class="string">"body"</span>)</span><br><span class="line">		.append(<span class="string">"svg"</span>)</span><br><span class="line">		.attr(<span class="string">"width"</span>,w)</span><br><span class="line">		.attr(<span class="string">"height"</span>,h);</span><br><span class="line">	<span class="keyword">var</span> circles=svg.selectAll(<span class="string">"circle"</span>)</span><br><span class="line">					.data(dataset)</span><br><span class="line">					.enter()</span><br><span class="line">					.append(<span class="string">"circle"</span>);</span><br><span class="line">	circles.attr(<span class="string">"cx"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> (i*<span class="number">125</span>)+<span class="number">25</span>;</span><br><span class="line">			&#125;)</span><br><span class="line">			.attr(<span class="string">"cy"</span>,h/<span class="number">2</span>)</span><br><span class="line">			.attr(<span class="string">"r"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> d*<span class="number">6</span>;</span><br><span class="line">			&#125;);</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="路径绘制">路径绘制</h4><p>效果图</p>
+<p><img src="http://needpp.qiniudn.com/2014/10/21/d879df4a-58cc-11e4-91be-2d5a0eff9ed9.png" alt=""></p>
+<p>需要进行数据的处理，预处理成Geojson格式。<br>原始数据可以从<a href="http://www.naturalearthdata.com/downloads/" target="_blank" rel="external">Natural Earth</a>下载.地图数据制作方法可以参照<a href="https://github.com/clemsos/d3-china-map" target="_blank" rel="external">中国地图GeoJson制作方法</a>。</p>
+<p>源代码(其中<a href="https://github.com/dcycome/ProDemo/china.json" target="_blank" rel="external">china.json</a>在这里)</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>D3 Test fro SVG<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"d3/d3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">		</span><br><span class="line">			<span class="keyword">var</span> w=<span class="number">1000</span>;</span><br><span class="line">			<span class="keyword">var</span> h=<span class="number">1000</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">var</span> svg=d3.select(<span class="string">"body"</span>)</span><br><span class="line">				.append(<span class="string">"svg"</span>)</span><br><span class="line">				.attr(<span class="string">"width"</span>,w)</span><br><span class="line">				.attr(<span class="string">"height"</span>,h);</span><br><span class="line">	</span><br><span class="line">			<span class="keyword">var</span> projection = d3.geo.mercator()</span><br><span class="line">						.center([<span class="number">107</span>, <span class="number">31</span>])</span><br><span class="line">						.scale(<span class="number">850</span>)</span><br><span class="line">    					.translate([w/<span class="number">2</span>, h/<span class="number">2</span>]);</span><br><span class="line">						</span><br><span class="line">			<span class="keyword">var</span> path = d3.geo.path().projection(projection);	</span><br><span class="line">			<span class="keyword">var</span> color = d3.scale.category20();			</span><br><span class="line">			d3.json(<span class="string">"china.json"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,json</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(error)&#123;</span><br><span class="line">					<span class="built_in">console</span>.log(error);</span><br><span class="line">				&#125;</span><br><span class="line">				svg.selectAll(<span class="string">"path"</span>)</span><br><span class="line">					.data(json.features)</span><br><span class="line">					.enter()</span><br><span class="line">					.append(<span class="string">"path"</span>)</span><br><span class="line">					.attr(<span class="string">"d"</span>,path)</span><br><span class="line">					.attr(<span class="string">"stroke"</span>,<span class="string">"#000"</span>)</span><br><span class="line">					.attr(<span class="string">"stroke-width"</span>,<span class="number">1</span>)</span><br><span class="line">					.attr(<span class="string">"fill"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</span><br><span class="line">						<span class="keyword">return</span> color(i);</span><br><span class="line">					&#125;)</span><br><span class="line">					.on(<span class="string">"mouseover"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</span><br><span class="line">						d3.select(<span class="keyword">this</span>)</span><br><span class="line">							.attr(<span class="string">"fill"</span>,<span class="string">"yellow"</span>);</span><br><span class="line">					&#125;)</span><br><span class="line">					.on(<span class="string">"mouseout"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</span><br><span class="line">						d3.select(<span class="keyword">this</span>)</span><br><span class="line">							.attr(<span class="string">"fill"</span>,color(i));</span><br><span class="line">					&#125;);</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//console.log(json);</span></span><br><span class="line">			&#125;);</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">"hello json"</span>);</span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="经纬度映射">经纬度映射</h4><p>接下来要做的就是如何将经纬度数据映射到地图中，并按照时间的先后顺序链接这些点形成路径，为车辆路径分析做辅助分析使用。。。</p>
+<h4 id="参考资料">参考资料</h4><ul>
+<li>数据可视化实战-by Scott Murray</li>
+<li><a href="http://blog.csdn.net/lzhlzz/article/category/2292565" target="_blank" rel="external">http://blog.csdn.net/lzhlzz/article/category/2292565</a></li>
+<li><a href="http://www.d3js.cn/?p=68" target="_blank" rel="external">http://www.d3js.cn/?p=68</a></li>
+<li><a href="https://www.dashingd3js.com/table-of-contents" target="_blank" rel="external">https://www.dashingd3js.com/table-of-contents</a></li>
+<li><a href="http://www.ourd3js.com/wordpress/?p=296" target="_blank" rel="external">http://www.ourd3js.com/wordpress/?p=296</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/10/22/那些让人相见恨晚的工具/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          那些让人相见恨晚的工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/21/文档整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">文档整理</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="D3 学习" data-title="D3 学习" data-url="http://needpp.com/2014/10/21/D3 学习/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

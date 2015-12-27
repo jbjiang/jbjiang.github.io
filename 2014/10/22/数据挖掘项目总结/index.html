@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据挖掘项目总结 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据挖掘项目总结文档1、文档概述1.1 编写目的记录本次实验思路及流程，备忘用。
+1.2 适用对象个人学习总结，描述有偏差之处陆续更进。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据挖掘项目总结">
+<meta property="og:url" content="http://needpp.com/2014/10/22/数据挖掘项目总结/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="数据挖掘项目总结文档1、文档概述1.1 编写目的记录本次实验思路及流程，备忘用。
+1.2 适用对象个人学习总结，描述有偏差之处陆续更进。">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d1abd572-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d247d7ba-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d26f6f3c-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d2a0b150-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d2e81d92-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d33ed1a0-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d36ea754-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.com/./1409217436135.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d3bb2f34-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d4757236-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/10/22/d49c74da-59f5-11e4-8976-bcaec5dfb671.png">
+<meta property="og:updated_time" content="2015-12-16T05:22:50.711Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据挖掘项目总结">
+<meta name="twitter:description" content="数据挖掘项目总结文档1、文档概述1.1 编写目的记录本次实验思路及流程，备忘用。
+1.2 适用对象个人学习总结，描述有偏差之处陆续更进。">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-数据挖掘项目总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/22/数据挖掘项目总结/" class="article-date">
+  	<time datetime="2014-10-21T16:00:00.000Z" itemprop="datePublished">2014-10-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据挖掘项目总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ml/">ml</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/weka/">weka</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据挖掘项目总结文档">数据挖掘项目总结文档</h3><h4 id="1、文档概述">1、文档概述</h4><h5 id="1-1_编写目的">1.1 编写目的</h5><p>记录本次实验思路及流程，备忘用。</p>
+<h5 id="1-2_适用对象">1.2 适用对象</h5><p>个人学习总结，描述有偏差之处陆续更进。</p>
+<a id="more"></a>
+<h4 id="2、业务理解与分析定义">2、业务理解与分析定义</h4><h5 id="2-1_需求概述">2.1 需求概述</h5><p>针对传统网络入侵检测系统存在的误判以及漏检情况，采用数据挖掘的指导思想，通过大量的攻击样本数据进行知识发现，本次实验采用的kdd99数据集，其中包含了大量的模拟攻击行为。</p>
+<blockquote>
+<p>1998年美国国防部高级规划署（DARPA）在MI T林肯实验室进行了一项入侵检测评估项目。林肯实验<br>室建立了模拟美国空军局域网的一个网络环境，收集了9周时间的 TCPdump() 网络连接和系统审计数<br>据，仿真各种用户类型、各种不同的网络流量和攻击手段，使它就像一个真实的网络环境。这些<br>TCPdump采集的原始数据被分为两个部分：7周时间的训练数据 (*) 大概包含5,000,000多个网络连接<br>记录，剩下的2周时间的测试数据大概包含2,000,000个网络连接记录。  ——<a href="">kdd数据集背景介绍</a></p>
+</blockquote>
+<p>值得注意的是随着互联网的飞速发展，各种新的攻击手段以及工具不断涌现，而用这份98年生成的测试数据集来作基线检测缺乏一定的实效性，而今市面上也无任何组织或者团体公布出新的检测标准，学术上也一直沿用这份数据集合来度量入侵检测算法的优劣。</p>
+<h5 id="2-2_分析目标定义">2.2 分析目标定义</h5><h5 id="2-3_模型定义">2.3 模型定义</h5><h4 id="3、数据准备与数据探索">3、数据准备与数据探索</h4><h5 id="3-1_数据准备">3.1 数据准备</h5><p>本文档采用的数据为kdd99数据集，进行分析探索。数据集合说明参照<a href="#">kdd99数据集整理-by dcy</a>。</p>
+<h5 id="3-2_数据分析和探索">3.2 数据分析和探索</h5><p>具体分析方法可以参照另外一个文档<a href="#">Weka快速入门-v1.0</a></p>
+<h5 id="3-3_数据处理流程图">3.3 数据处理流程图</h5><p><em>数据处理流程图</em></p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d1abd572-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<h4 id="4、模型构建">4、模型构建</h4><h5 id="4-1_分析思路">4.1 分析思路</h5><p>参考论文<strong>《基于数据挖掘的入侵检测模型研究_王超峰》</strong>的分析思路。论文将关联规则挖掘算法和基于最小相异度的聚类算法应用于入侵检测，从而设计了一个基于数据挖掘的入侵检测模型，该模型的主要思想是：通过关联规则挖掘算法建立误用信息库并进行误用检测，能快速的检测出已知的入侵行为，但是容易产生漏报，需要进行二次检测；采用最小相异度的聚类算法建立聚类信息库，并进行二次检测，检测出漏报的和未知的入侵行为。 基于数据挖掘的入侵检测模型的关键在于误用信息库和聚类信息库的建立、更新、误用检测和聚类检测几个部分。模型框架如下图所示：</p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d247d7ba-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<h5 id="4-2_建模工具">4.2 建模工具</h5><ul>
+<li>weka</li>
+<li>scikit-learing</li>
+<li>spss</li>
+</ul>
+<h5 id="4-3_建模流程">4.3 建模流程</h5><p>由于获取到的kdd99数据集已经经过整理成结构话的数据，每条记录包含41个特征属性以及一个分类标签，一共42个字段使用逗号分隔符进行分割。</p>
+<p><em>示例数据如下所示</em></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span>,tcp,http,SF,<span class="number">181</span>,<span class="number">5450</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">1.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">1.00</span>,<span class="number">0.00</span>,<span class="number">0.11</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,normal.</span><br><span class="line"><span class="number">0</span>,tcp,http,SF,<span class="number">239</span>,<span class="number">486</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">1.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">19</span>,<span class="number">19</span>,<span class="number">1.00</span>,<span class="number">0.00</span>,<span class="number">0.05</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,<span class="number">0.00</span>,normal.</span><br></pre></td></tr></table></figure>
+<p>将其转化为weka内置arff格式。其中有些属性有所省略，这里只做大概理解，详细格式信息参见<a href="#">Weka学习总结-v1.0</a>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@relation attr</span><br><span class="line"></span><br><span class="line">@attribute duration numeric</span><br><span class="line">@attribute protocol_<span class="built_in">type</span> &#123;tcp,udp,icmp&#125;</span><br><span class="line">@attribute service &#123;http,smtp,finger,domain_u,auth,telnet,ftp,eco_i,ntp_u,ecr_i,other,private,pop_3,ftp_data,rje,time,mtp,link,remote_job,gopher,ssh,name,whois,domain,login,imap4,daytime,ctf,nntp,shell,IRC,nnsp,http_443,<span class="built_in">exec</span>,printer,efs,courier,uucp,klogin,kshell,<span class="built_in">echo</span>,discard,systat,supdup,iso_tsap,hostnames,csnet_ns,pop_2,sunrpc,uucp_path,netbios_ns,netbios_ssn,netbios_dgm,sql_net,vmnet,bgp,Z39_50,ldap,netstat,urh_i,X11,urp_i,pm_dump,tftp_u,tim_i,red_i&#125;</span><br><span class="line">@attribute flag &#123;SF,S1,REJ,S2,S0,S3,RSTO,RSTR,RSTOS0,OTH,SH&#125;</span><br><span class="line">@attribute src_bytes numeric</span><br><span class="line">@attribute dst_bytes numeric</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">@attribute dst_host_rerror_rate numeric</span><br><span class="line">@attribute dst_host_srv_rerror_rate numeric</span><br><span class="line">@attribute lable &#123;normal.,buffer_overflow.,loadmodule.,perl.,neptune.,smurf.,guess_passwd.,pod.,teardrop.,portsweep.,ipsweep.,land.,ftp_write.,back.,imap.,satan.,phf.,nmap.,multihop.,warezmaster.,warezclient.,spy.,rootkit.&#125;</span><br><span class="line"></span><br><span class="line">@data</span><br><span class="line"><span class="number">0</span>,tcp,http,SF,<span class="number">181</span>,<span class="number">5450</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0.11</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,normal.</span><br><span class="line"><span class="number">0</span>,tcp,http,SF,<span class="number">239</span>,<span class="number">486</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">19</span>,<span class="number">19</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0.05</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,normal.</span><br><span class="line"><span class="number">0</span>,tcp,http,SF,<span class="number">235</span>,<span class="number">1337</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">8</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">29</span>,<span class="number">29</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0.03</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,normal.</span><br></pre></td></tr></table></figure>
+<p><em>特征抽取</em></p>
+<p>根据 Kayacik H G等人在<a href="http://www.researchgate.net/publication/220919984_Selecting_Features_for_Intrusion_Detection_A_Feature_Relevance_Analysis_on_KDD_99/file/3deec529d20b943102.pdf" target="_blank" rel="external">Selecting features for intrusion detection</a>这篇文章中所使用的信息增益的方法来选择特征，一方面减少冗余特征、另一方面也可以提高学习速度。<br>借助开源软件<a href="http://www.cs.waikato.ac.nz/ml/weka/" target="_blank" rel="external">Weka</a>，我们可以很容易的在数据集合上选择出相应的和分类标签最相关的特征用来学习，由于我们直接采用kdd提供的10%小数据集合（近400w条连接记录）作为训练集，没有单独提出测试集合，故采用10折交叉验证的方式进行特征选择。</p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d26f6f3c-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<p><strong>关联分析模块</strong><br>生成关联规则<br>十则交叉验证整个数据集合得到每个特征对于分类属性的一个信息熵，我们设定阈值为0.5，选出大于0.5以上的特征属性进行降为学习。</p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d2a0b150-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<p>我们发现剩下17个特征以及一个类标签：</p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d2e81d92-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<p>下面进行关联规则的生成。选择Apriori算法，由于该算法针对是离散型变量，故我们需要再对数据进行离散化处理。完了之后调整Apriori算法相关参数导出关联规则。</p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d33ed1a0-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<p>图中的蕴含关系则为推导出的<strong>强关联规则</strong>。</p>
+<p>生成关联规则之后，进行误用检测的流程图 </p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d36ea754-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<p><strong>聚类分析模块</strong><br>                <img src="./1409217436135.png" alt="聚类分析模块"><br>按照分类属性，使用简单聚类方式将数据集分成4个聚类。</p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d3bb2f34-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<p>图中勾出了四个中心点。得到结果仅供演示使用，为了提高速度只选取了1%的数据（49402条记录）。不能代表全局，要定义的中心点的个数也可以另外指定，不断的实验对比，从而确定最优的个数。</p>
+<h5 id="4-4_模型结果">4.4 模型结果</h5><h4 id="5、模型评估">5、模型评估</h4><h5 id="5-1_模型评估方法">5.1 模型评估方法</h5><p>使用分类的正确率来度量。</p>
+<h5 id="5-2_评估结果">5.2 评估结果</h5><p>简单采用分类树进行模拟发现，在对经过提取特征的数据进行分类训练，这里采用在原来的训练集合上采用十折交叉验证方式进行评估，分类正确率99.8% ，存在着过拟合现象，由于缺乏测试集合的类标签，无法进行模型的泛化能力（对原数据集合中不曾出现过的类别）检测。总体说来，这些数据集经过非常精细的整理并除去了一些冗余的信息，而且本身包含大量的攻击行为。这是分类正确率如此之高的原因，具体应用的场景能达到一个怎么样的水平以及如何提高分类模型的准确率，还的经过真实数据的检验。</p>
+<p><em>评估结果</em></p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d4757236-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<p><em>混淆矩阵</em></p>
+<p><img src="http://needpp.qiniudn.com/2014/10/22/d49c74da-59f5-11e4-8976-bcaec5dfb671.png" alt=""></p>
+<h4 id="7、参考资料">7、参考资料</h4><ul>
+<li>Kayacik H G, Zincir-Heywood A N, Heywood M I. Selecting features for intrusion detection: A feature relevance analysis on KDD 99 intrusion detection datasets[C]//Proceedings of the third annual conference on privacy, security and trust. 2005.</li>
+<li>王超峰. 基于数据挖掘的入侵检测模型研究[D].青岛理工大学,2010.</li>
+<li><a href="">weka快速入门-v1.0</a></li>
+<li><a href="">kdd99数据集整理-by dcy</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/10/22/git简易使用指南/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          git简易使用指南
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/22/Weka 二次开发使用心得/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Weka 二次开发使用心得</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="数据挖掘项目总结" data-title="数据挖掘项目总结" data-url="http://needpp.com/2014/10/22/数据挖掘项目总结/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

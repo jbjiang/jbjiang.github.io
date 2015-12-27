@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>IJCAI2015重复购买用户预测 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="create table首先创建一个数据库表#字段含义分别为 用户id 商品id 类别id 卖家id 品牌id 时间 操作行为create table big(uid varchar(15),iid varchar(15),cid varchar(15) ,sid varchar(15),bid varchar(15),time int,action tinyint)#create index o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IJCAI2015重复购买用户预测">
+<meta property="og:url" content="http://needpp.com/2015/04/30/IJCAI2015重复购买用户预测/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="create table首先创建一个数据库表#字段含义分别为 用户id 商品id 类别id 卖家id 品牌id 时间 操作行为create table big(uid varchar(15),iid varchar(15),cid varchar(15) ,sid varchar(15),bid varchar(15),time int,action tinyint)#create index o">
+<meta property="og:updated_time" content="2015-12-15T14:43:19.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IJCAI2015重复购买用户预测">
+<meta name="twitter:description" content="create table首先创建一个数据库表#字段含义分别为 用户id 商品id 类别id 卖家id 品牌id 时间 操作行为create table big(uid varchar(15),iid varchar(15),cid varchar(15) ,sid varchar(15),bid varchar(15),time int,action tinyint)#create index o">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-IJCAI2015重复购买用户预测" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/30/IJCAI2015重复购买用户预测/" class="article-date">
+  	<time datetime="2015-04-29T16:00:00.000Z" itemprop="datePublished">2015-04-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      IJCAI2015重复购买用户预测
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ijcai/">ijcai</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="create_table">create table</h3><p>首先创建一个数据库表<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">#字段含义分别为 用户id 商品id 类别id 卖家id 品牌id 时间 操作行为</span><br><span class="line">create <span class="tag">table</span> big(</span><br><span class="line">uid <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">15</span>)</span></span>,</span><br><span class="line">iid <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">15</span>)</span></span>,</span><br><span class="line">cid <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">15</span>)</span></span> ,</span><br><span class="line">sid <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">15</span>)</span></span>,</span><br><span class="line">bid <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">15</span>)</span></span>,</span><br><span class="line"><span class="tag">time</span> int,</span><br><span class="line">action tinyint</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="id">#create</span> index on field `aciton` ...</span><br><span class="line">create index  index_action on <span class="function"><span class="title">big</span><span class="params">(action)</span></span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="load_data">load data</h3><p>导入数据到数据库，这部分可以不用细看<br><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">mysql -<span class="keyword">u</span> root -p tianchi2 --<span class="keyword">local</span>-<span class="keyword">infile</span>=1 -<span class="keyword">e</span> 'load data <span class="keyword">local</span> <span class="keyword">infile</span> <span class="string">"/home/spark/data/ali/user.csv"</span> into <span class="keyword">table</span> user fields terminated <span class="keyword">by</span> <span class="string">","</span> lines terminated <span class="keyword">by</span> <span class="string">"\n"</span>'</span><br><span class="line"> </span><br><span class="line">mysql -<span class="keyword">u</span> root -p bigdata --<span class="keyword">local</span>-<span class="keyword">infile</span>=1 -<span class="keyword">e</span> 'load data <span class="keyword">local</span> <span class="keyword">infile</span> <span class="string">"/home/spark/data/2015/data_format1/user_log_format1.csv"</span> into <span class="keyword">table</span> big fields terminated <span class="keyword">by</span> <span class="string">","</span> lines terminated <span class="keyword">by</span> <span class="string">"\n"</span>'</span><br></pre></td></tr></table></figure></p>
+<h3 id="choose_data">choose data</h3><p>当前的工作主要是从数据库中进行分组查询 等到一些统计的特征进行分析，用到一些group by  ,sum,等操作。可以先了解一下是怎么个过程，具体使用可以先搁置在一边，现在主要是理解我做了写什么事情。理清整个脉络。<br><figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line"><span class="comment">####数据格式，数据库里面的数据就是下面的这种形式 这是个示例</span></span><br><span class="line">mysql&gt; select <span class="keyword">*</span> from big limit 10;</span><br><span class="line">+--------+---------+------+------+------+------+--------+</span><br><span class="line">|<span class="string"> uid    </span>|<span class="string"> iid     </span>|<span class="string"> cid  </span>|<span class="string"> sid  </span>|<span class="string"> bid  </span>|<span class="string"> time </span>|<span class="string"> action </span>|</span><br><span class="line">+--------+---------+------+------+------+------+--------+</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 323294  </span>|<span class="string"> 833  </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 844400  </span>|<span class="string"> 1271 </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 575153  </span>|<span class="string"> 1271 </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 996875  </span>|<span class="string"> 1271 </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 1086186 </span>|<span class="string"> 1271 </span>|<span class="string"> 1253 </span>|<span class="string"> 1049 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 623866  </span>|<span class="string"> 1271 </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 542871  </span>|<span class="string"> 1467 </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 536347  </span>|<span class="string"> 1095 </span>|<span class="string"> 883  </span>|<span class="string"> 1647 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 364513  </span>|<span class="string"> 1271 </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">|<span class="string"> 328862 </span>|<span class="string"> 575153  </span>|<span class="string"> 1271 </span>|<span class="string"> 2882 </span>|<span class="string"> 2661 </span>|<span class="string">  829 </span>|<span class="string">      0 </span>|</span><br><span class="line">+--------+---------+------+------+------+------+--------+</span><br></pre></td></tr></table></figure></p>
+<p>1、统计用户对卖家点击、收藏、购物车、购买次数<br><code>注意，这里action行为字段的含义是0-点击，3-收藏，1-购物车、2-购买。下面也是如此。</code><br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#用户对卖家点击、收藏、购物车、购买次数</span><br><span class="line"><span class="operator"><span class="keyword">select</span> uid,<span class="keyword">sid</span>,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">0</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) a , </span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">3</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) b ,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">1</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">c</span> ,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">2</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">d</span> </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/uid-sid.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">group</span> <span class="keyword">by</span> uid,<span class="keyword">sid</span> ;</span></span><br></pre></td></tr></table></figure></p>
+<p>2、统计用户历史期间所有点击、收藏、购物车、购买次数<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#用户历史期间所有点击、收藏、购物车、购买次数</span><br><span class="line"><span class="operator"><span class="keyword">select</span> uid,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">0</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) a , </span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">3</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) b ,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">1</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">c</span> ,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">2</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">d</span> </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/uid.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">group</span> <span class="keyword">by</span> uid;</span></span><br></pre></td></tr></table></figure></p>
+<p>3、统计卖家历史期间店内商品被点击、收藏、购物车、购买次数<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">##卖家历史期间店内商品被点击、收藏、购物车、购买次数</span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">sid</span>,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">0</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) a , </span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">3</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) b ,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">1</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">c</span> ,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> <span class="keyword">action</span>=<span class="number">2</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">d</span> </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/sid.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">sid</span> ;</span></span><br></pre></td></tr></table></figure></p>
+<p>4、这里本来是想统计用户在某个店内对某个品牌的操作次数与在所有店内某个品牌操作次数的比值。sql不能一次完成 所以导出数据在python里面自己处理。这里对应是添加了两个统计特征 cid-pro和bid-pro<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#六个月内用户对品牌的操作次数</span><br><span class="line"><span class="operator"><span class="keyword">select</span> uid,bid,<span class="keyword">count</span>(*) </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/uid-bid.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">group</span> <span class="keyword">by</span> uid,bid ;</span> </span><br><span class="line"></span><br><span class="line">#六个月内用户对某一个具体卖家中 所有品牌的操作次数</span><br><span class="line"><span class="operator"><span class="keyword">select</span> uid,<span class="keyword">sid</span>,bid,<span class="keyword">count</span>(*) </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/uid-sid-bid.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">group</span> <span class="keyword">by</span> uid,<span class="keyword">sid</span>,bid ;</span> </span><br><span class="line"></span><br><span class="line">#六个月内用户对类别的操作次数</span><br><span class="line"><span class="operator"><span class="keyword">select</span> uid,cid,<span class="keyword">count</span>(*) </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/uid-cid.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">group</span> <span class="keyword">by</span> uid,cid ;</span> </span><br><span class="line"></span><br><span class="line">#六个月内用户对某一个具体卖家中 类别的操作次数</span><br><span class="line"><span class="operator"><span class="keyword">select</span> uid,<span class="keyword">sid</span>,cid,<span class="keyword">count</span>(*) </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/uid-sid-cid.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">group</span> <span class="keyword">by</span> uid,<span class="keyword">sid</span>,cid ;</span></span><br></pre></td></tr></table></figure></p>
+<p>这部分代码可以先不用看 你知道有cid-pro、pid-pro就可以了<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">uid_sid_cid=pd.read_csv(<span class="string">"/home/spark/data/2015/data_format1/uid-sid-cid.csv"</span>,names=[<span class="string">'user_id'</span>,<span class="string">'merchant_id'</span>,<span class="string">'cid'</span>,<span class="string">'uid-sid-cid'</span>])</span><br><span class="line">uid_cid=pd.read_csv(<span class="string">"/home/spark/data/2015/data_format1/uid-cid.csv"</span>,names=[<span class="string">'user_id'</span>,<span class="string">'cid'</span>,<span class="string">'uid-cid'</span>])</span><br><span class="line">result=pd.merge(uid_sid_cid,uid_cid,on=[<span class="string">'user_id'</span>,<span class="string">'cid'</span>])</span><br><span class="line">result[<span class="string">'cid-pro'</span>]=result[<span class="string">'uid-sid-cid'</span>]/result[<span class="string">'uid-cid'</span>]</span><br><span class="line">result[[<span class="string">'user_id'</span>,<span class="string">'merchant_id'</span>,<span class="string">'cid-pro'</span>]].to_csv(<span class="string">"/home/spark/data/2015/data_format1/cid-pro.csv"</span>,index=<span class="keyword">False</span>)</span><br><span class="line"><span class="comment">#testreuslt.to_csv("/home/spark/data/2015/data_format1/test505.csv",index=False)</span></span><br><span class="line"></span><br><span class="line">uid_sid_bid=pd.read_csv(<span class="string">"/home/spark/data/2015/data_format1/uid-sid-bid.csv"</span>,names=[<span class="string">'user_id'</span>,<span class="string">'merchant_id'</span>,<span class="string">'bid'</span>,<span class="string">'uid-sid-bid'</span>])</span><br><span class="line">uid_bid=pd.read_csv(<span class="string">"/home/spark/data/2015/data_format1/uid-bid.csv"</span>,names=[<span class="string">'user_id'</span>,<span class="string">'bid'</span>,<span class="string">'uid-bid'</span>])</span><br><span class="line">result=pd.merge(uid_sid_bid,uid_bid,on=[<span class="string">'user_id'</span>,<span class="string">'bid'</span>])</span><br><span class="line">result[<span class="string">'bid-pro'</span>]=result[<span class="string">'uid-sid-bid'</span>]/result[<span class="string">'uid-bid'</span>]</span><br><span class="line">result[[<span class="string">'user_id'</span>,<span class="string">'merchant_id'</span>,<span class="string">'bid-pro'</span>]].to_csv(<span class="string">"/home/spark/data/2015/data_format1/bid-pro.csv"</span>,index=<span class="keyword">False</span>)</span><br><span class="line"><span class="comment">#testreuslt.to_csv("/home/spark/data/2015/data_format1/test505.csv",index=False)</span></span><br></pre></td></tr></table></figure></p>
+<p>5、添加性别和年龄（从文本里面完成 没有用到数据库操作，这里不在描述过程）</p>
+<hr>
+<p>6、这个部分现在还没有添加。。。是准备要添加的属性。。。<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#重复购买次数</span><br><span class="line">spark@spark-desktop:~/data/2015/data_format1$ head -n 100 uid-sid.csv</span><br><span class="line">user_id,merchant_id,a,b,c,d</span><br><span class="line">1,1019,10,0,0,4</span><br><span class="line">1,1156,1,0,0,0</span><br><span class="line">1,2245,5,0,0,0</span><br><span class="line">1,4026,4,0,0,1</span><br><span class="line">1,4177,1,0,0,0</span><br><span class="line">1,4335,1,0,0,0</span><br><span class="line">1,471,1,0,0,0</span><br><span class="line">1,739,1,0,0,0</span><br><span class="line">1,925,3,0,0,1</span><br><span class="line">10,1364,13,1,0,5</span><br><span class="line">10,1454,9,0,0,0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="operator"><span class="keyword">select</span> uid,iid,<span class="keyword">count</span>(*) </span><br><span class="line"><span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/tmp/uid-iid-count.csv'</span>  <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span> </span><br><span class="line"><span class="keyword">from</span> <span class="keyword">big</span> <span class="keyword">where</span> <span class="keyword">action</span>=<span class="number">2</span> <span class="keyword">group</span> <span class="keyword">by</span> uid,iid ;</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d为用户在卖家店内过去购买商品的总次数   衡量重复购买次数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#重复购买时间间隔</span><br></pre></td></tr></table></figure></p>
+<h3 id="现在具有的属性（train06-csv）">现在具有的属性（train06.csv）</h3><p><code>注意：前两列没有作为属性，最后一列为类别标签</code><br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">user_id,merchant_id,a,b,c,d,u1,u2,u3,u4,s1,s2,s3,s4,age_range,gender,cid-pro,bid-pro,label</span><br><span class="line"><span class="number">34176</span>,<span class="number">3906</span>,<span class="number">36</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">410</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">34</span>,<span class="number">14870</span>,<span class="number">961</span>,<span class="number">28</span>,<span class="number">410</span>,<span class="number">6.0</span>,<span class="number">0.0</span>,<span class="number">0.30499243304121354</span>,<span class="number">1.0</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="number">34176</span>,<span class="number">121</span>,<span class="number">13</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">410</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">34</span>,<span class="number">72265</span>,<span class="number">2699</span>,<span class="number">121</span>,<span class="number">4780</span>,<span class="number">6.0</span>,<span class="number">0.0</span>,<span class="number">1.0</span>,<span class="number">1.0</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="number">34176</span>,<span class="number">4356</span>,<span class="number">12</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">6</span>,<span class="number">410</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">34</span>,<span class="number">6094</span>,<span class="number">196</span>,<span class="number">16</span>,<span class="number">963</span>,<span class="number">6.0</span>,<span class="number">0.0</span>,<span class="number">0.8181818181818182</span>,<span class="number">0.7826086956521741</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="links">links</h3><p><a href="https://dato.com/learn/userguide/" target="_blank" rel="external">https://dato.com/learn/userguide/</a></p>
+<h4 id="语法使用">语法使用</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重命名列名字</span></span><br><span class="line">t.rename(columns=&#123;<span class="string">'class'</span>:<span class="string">'label'</span>&#125;,inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment">#shuffle</span></span><br><span class="line">index2=np.arange(len(t))</span><br><span class="line">np.random.shuffle(index2)</span><br><span class="line">t.reindex(index=index2)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/15/天猫移动推荐竞赛s1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          天猫移动推荐竞赛s1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/27/pandas数据操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pandas数据操作</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="IJCAI2015重复购买用户预测" data-title="IJCAI2015重复购买用户预测" data-url="http://needpp.com/2015/04/30/IJCAI2015重复购买用户预测/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

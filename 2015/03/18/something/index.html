@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>something | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="public int BinarySearch(int a[],int num)&amp;#123;	int len=a.lenght;	int low=0,high=len-1;	while(low&amp;lt;=high)&amp;#123;		int mid=(low+high)/2;		if(a[mid]==num)&amp;#123;			return mid;		&amp;#125;else if(a[mid]&amp;lt;nu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="something">
+<meta property="og:url" content="http://needpp.com/2015/03/18/something/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="public int BinarySearch(int a[],int num)&amp;#123;	int len=a.lenght;	int low=0,high=len-1;	while(low&amp;lt;=high)&amp;#123;		int mid=(low+high)/2;		if(a[mid]==num)&amp;#123;			return mid;		&amp;#125;else if(a[mid]&amp;lt;nu">
+<meta property="og:updated_time" content="2015-12-15T14:46:05.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="something">
+<meta name="twitter:description" content="public int BinarySearch(int a[],int num)&amp;#123;	int len=a.lenght;	int low=0,high=len-1;	while(low&amp;lt;=high)&amp;#123;		int mid=(low+high)/2;		if(a[mid]==num)&amp;#123;			return mid;		&amp;#125;else if(a[mid]&amp;lt;nu">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-something" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/18/something/" class="article-date">
+  	<time datetime="2015-03-17T16:00:00.000Z" itemprop="datePublished">2015-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      something
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/others/">others</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">BinarySearch</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len=a.lenght;</span><br><span class="line">	<span class="keyword">int</span> low=<span class="number">0</span>,high=len-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(a[mid]==num)&#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(a[mid]&lt;num)&#123;</span><br><span class="line">			low=mid+<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			high=mid-<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span>  <span class="title">BinarySearch</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> lo, <span class="keyword">int</span> hi,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(lo&lt;=hi)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(key==a[mid])</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(key&lt;a[mid]) </span><br><span class="line">			<span class="keyword">return</span> BinarySearch(key,lo,mid-<span class="number">1</span>,key);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(key&gt;a[mid]) </span><br><span class="line">			<span class="keyword">return</span> BinarySearch(key,mid+<span class="number">1</span>,high,key);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// swap</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> a[] ,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> temp=a[i];</span><br><span class="line">	a[i]=a[j];</span><br><span class="line">	a[j]=temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// select sort</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectsort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> min=i;</span><br><span class="line">		<span class="comment">//from i+1 to find the mini</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;len;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[min]&gt;a[j])&#123;</span><br><span class="line">				min=j;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//swap with the i element</span></span><br><span class="line">		swap(a,i,min);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertsort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&gt;<span class="number">0</span>;j--)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[j]&lt;a[j-<span class="number">1</span>])&#123;</span><br><span class="line">				swap(a,j,j-<span class="number">1</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shellsort</span><span class="params">(<span class="keyword">int</span> a[] ,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> h=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(h&lt;len/<span class="number">3</span>) h=h*<span class="number">3</span>+<span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(h&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;h;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&gt;=h;j=j-h)&#123;</span><br><span class="line">				<span class="keyword">if</span>(a[j]&lt;a[j-h])&#123;</span><br><span class="line">					swap(a,j,j-h);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		h=h/<span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//heap swim to top</span></span><br><span class="line"><span class="comment">//from boot to top</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swim</span><span class="params">(<span class="keyword">int</span> k )</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(k&gt;<span class="number">1</span>&amp;&amp;pq[k]&gt;pq[k/<span class="number">2</span>])&#123;</span><br><span class="line">		swap(pq,k,k/<span class="number">2</span>);</span><br><span class="line">		k=k/<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sink</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">2</span>*k&lt;n)&#123;</span><br><span class="line">		<span class="keyword">int</span> j=<span class="number">2</span>*k;</span><br><span class="line">		<span class="keyword">if</span>(pq[j]&lt;pq[j+<span class="number">1</span>]) j++;</span><br><span class="line">		<span class="keyword">if</span>(pq[k]&gt;pq[j]) <span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">//else swap the parent and the bigger chilren</span></span><br><span class="line">		swap(pq,k,j);</span><br><span class="line">		<span class="comment">//set the current node to chilren</span></span><br><span class="line">		k=j;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertheap</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">	pq[++N]=s;</span><br><span class="line">	swim(N);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">delheaptop</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> max=pq[<span class="number">1</span>];</span><br><span class="line">	swap(pq,<span class="number">1</span>,N--);</span><br><span class="line">	sink(<span class="number">1</span>); <span class="comment">//rebuild the heap from up to down</span></span><br><span class="line">	<span class="comment">//set the last to default value</span></span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getvalue</span><span class="params">(Node root,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root=null) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(key&gt;root.key) <span class="keyword">return</span> getvalue(root.right);</span><br><span class="line">	<span class="keyword">if</span>(key&lt;root.key) <span class="keyword">return</span> getvalue(root.left);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> root.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getvalue</span><span class="params">(<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">	Node node=root;</span><br><span class="line">	<span class="keyword">while</span>(node!=null)&#123;</span><br><span class="line">		<span class="keyword">if</span>(key&gt;node.key)&#123;</span><br><span class="line">			node=node.right;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(key&lt;node.key)&#123;</span><br><span class="line">			node=node.left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			result=node.value;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> a[] ,<span class="keyword">int</span> left,<span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=left,j=right+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">		<span class="keyword">while</span>(a[++i]&lt;a[left])</span><br><span class="line">			<span class="keyword">if</span>(i==right) <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">while</span>(a[--j]&gt;a[left])</span><br><span class="line">			<span class="keyword">if</span>(i==left) <span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">if</span>(i&gt;=j) <span class="keyword">break</span>;</span><br><span class="line">		swap(a,i,j)</span><br><span class="line">	&#125;</span><br><span class="line">	swap(a,j,left);</span><br><span class="line">	<span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(low&gt;=high) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> partition=partition(a,low,high);</span><br><span class="line">	sort(a,low,partion-<span class="number">1</span>);</span><br><span class="line">	sort(a,partion+<span class="number">1</span>,high);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Graph g,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	marked[v]=<span class="literal">true</span>;</span><br><span class="line">	count++;</span><br><span class="line">	foreach(<span class="keyword">int</span> vertical in g.GetAdjacency(v))&#123;</span><br><span class="line">		<span class="keyword">if</span>(!marked(vertical))&#123;</span><br><span class="line">			dfs(g,vertical);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/18/spark demo to save.../" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Spark Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/18/shell 判断hadoop 是否启动成功/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell 判断hadoop 是否启动成功</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="something" data-title="something" data-url="http://needpp.com/2015/03/18/something/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

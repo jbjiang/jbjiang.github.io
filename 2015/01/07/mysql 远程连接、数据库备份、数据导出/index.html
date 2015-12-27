@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql 远程连接、数据库备份、数据导出 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="mysql 远程连接、数据库备份、数据导出GRANT ALL PRIVILEGES ON *.* TO &apos;hello&apos;@&apos;%&apos; IDENTIFIED BY &apos;hello123&apos; WITH GRANT OPTION;
+mysql -h server_ip  -u hello -p  hello123
+errorERROR 2003 (HY000): Can&apos;t connect to MySQL se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql 远程连接、数据库备份、数据导出">
+<meta property="og:url" content="http://needpp.com/2015/01/07/mysql 远程连接、数据库备份、数据导出/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="mysql 远程连接、数据库备份、数据导出GRANT ALL PRIVILEGES ON *.* TO &apos;hello&apos;@&apos;%&apos; IDENTIFIED BY &apos;hello123&apos; WITH GRANT OPTION;
+mysql -h server_ip  -u hello -p  hello123
+errorERROR 2003 (HY000): Can&apos;t connect to MySQL se">
+<meta property="og:updated_time" content="2015-12-12T03:11:26.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql 远程连接、数据库备份、数据导出">
+<meta name="twitter:description" content="mysql 远程连接、数据库备份、数据导出GRANT ALL PRIVILEGES ON *.* TO &apos;hello&apos;@&apos;%&apos; IDENTIFIED BY &apos;hello123&apos; WITH GRANT OPTION;
+mysql -h server_ip  -u hello -p  hello123
+errorERROR 2003 (HY000): Can&apos;t connect to MySQL se">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-mysql 远程连接、数据库备份、数据导出" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/07/mysql 远程连接、数据库备份、数据导出/" class="article-date">
+  	<time datetime="2015-01-06T16:00:00.000Z" itemprop="datePublished">2015-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql 远程连接、数据库备份、数据导出
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mysql_远程连接、数据库备份、数据导出">mysql 远程连接、数据库备份、数据导出</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">GRANT</span> ALL <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'hello'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'hello123'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">mysql -<span class="keyword">h</span> server_ip  -<span class="keyword">u</span> hello -p  hello123</span><br></pre></td></tr></table></figure>
+<p>error<br><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">ERROR <span class="number">2003</span> (HY000): Can't connect <span class="keyword">to</span> MySQL server <span class="function_start"><span class="keyword">on</span></span> '<span class="number">192.168</span><span class="number">.1</span><span class="number">.3</span>' (<span class="number">111</span>)</span><br></pre></td></tr></table></figure></p>
+<p>update my.cnf<br><figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line">whereis mysql</span><br><span class="line"><span class="comment">## promote</span></span><br><span class="line">spark<span class="variable">@spark</span>-<span class="symbol">desktop:</span>~<span class="variable">$ </span>whereis mysql</span><br><span class="line"><span class="symbol">mysql:</span> /usr/bin/mysql /etc/mysql /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">mysql</span> /<span class="title">usr</span>/<span class="title">bin</span>/<span class="title">X11</span>/<span class="title">mysql</span> /<span class="title">usr</span>/<span class="title">include</span>/<span class="title">mysql</span> /<span class="title">usr</span>/<span class="title">share</span>/<span class="title">mysql</span> /<span class="title">usr</span>/<span class="title">share</span>/<span class="title">man</span>/<span class="title">man1</span>/<span class="title">mysql</span>.1.<span class="title">gz</span></span></span><br><span class="line">spark<span class="variable">@spark</span>-<span class="symbol">desktop:</span>~$</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="preprocessor"># find the file of my.conf and update it </span></span><br><span class="line">注释掉这一行，实现全局监听</span><br><span class="line"><span class="preprocessor">#bind-address           = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>restar mysql<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">sudo <span class="regexp">/etc/i</span>nit.d／mysql restart</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to &#39;car&#39;@&#39;%&#39; identified by &#39;car123456&#39;;</span><br></pre></td></tr></table></figure>
+<p>done,good job.</p>
+<h3 id="mysqldump">mysqldump</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>.导出整个数据库</span><br><span class="line"> mysqldump -u 用户名 -<span class="tag">p</span> 数据库名 &gt; 导出的文件名    </span><br><span class="line"> mysqldump -u wcnc -<span class="tag">p</span> smgp_apps_wcnc &gt; wcnc<span class="class">.sql</span></span><br><span class="line"><span class="number">2</span>.导出一个表</span><br><span class="line"> mysqldump -u 用户名 -<span class="tag">p</span> 数据库名 表名&gt; 导出的文件名</span><br><span class="line"> mysqldump -u wcnc -<span class="tag">p</span> smgp_apps_wcnc users&gt; wcnc_users<span class="class">.sql</span></span><br><span class="line"><span class="number">3</span>.导出一个数据库结构</span><br><span class="line">  mysqldump -u wcnc -<span class="tag">p</span> -d --add-drop-<span class="tag">table</span> smgp_apps_wcnc &gt;d:\wcnc_db<span class="class">.sql</span></span><br><span class="line"> -d 没有数据 --add-drop-<span class="tag">table</span> 在每个create语句之前增加一个drop <span class="tag">table</span> </span><br><span class="line"><span class="number">4</span>.导入数据库</span><br><span class="line">  常用source 命令</span><br><span class="line">  进入mysql数据库控制台，</span><br><span class="line">  如mysql -u root -p</span><br></pre></td></tr></table></figure>
+<h3 id="mysql_load_file">mysql load file</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">load</span>  <span class="keyword">data</span> <span class="keyword">local</span> <span class="keyword">infile</span> <span class="string">'/home/scut1/data/xx.txt'</span>   <span class="keyword">into</span> <span class="keyword">table</span> yourtablename</span><br><span class="line"><span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span> <span class="keyword">lines</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\n'</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> A <span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'/home/scut1/data/xx.txt'</span> <span class="keyword">fields</span> </span><br><span class="line"><span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span> <span class="keyword">lines</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\n'</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="ps">ps</h3><p>今天在测试导入数据的时候，发现一点问题。提示：ERROR 1148 (42000): The used command is not allowed with this MySQL version原因是；如果编译安装mysql时没有指定–enable-local-infile，那么在使用上述命令时会报以上的错误.<br>使用apt-get 安装的mysql,不想自己重新编译。那么可以通过使用指定命令的方式进行执行数据的导入操作。</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">mysql -<span class="keyword">u</span> root -p  mydb_name --<span class="keyword">local</span>-<span class="keyword">infile</span>=1 -<span class="keyword">e</span>　'load data <span class="keyword">local</span> <span class="keyword">infile</span> <span class="string">"/tmp/t.csv"</span>  into <span class="keyword">table</span> u_table fields terminated <span class="keyword">by</span> <span class="string">","</span> lines terminated <span class="keyword">by</span> <span class="string">"\n"</span>'</span><br></pre></td></tr></table></figure>
+<p>ok done!</p>
+<h3 id="编码坑货">编码坑货</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> fun <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> utf8 <span class="keyword">COLLATE</span> utf8_general_ci;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">create <span class="tag">table</span> huoche(</span><br><span class="line">    id <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">18</span>)</span></span> primary key,</span><br><span class="line">    name <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>,</span><br><span class="line">    tel <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">15</span>)</span></span>,</span><br><span class="line">    mail <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">50</span>)</span></span>,</span><br><span class="line">    uname <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>,</span><br><span class="line">    pwd <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">mysql -<span class="keyword">u</span> root -p fun --<span class="keyword">local</span>-<span class="keyword">infile</span>=1 -<span class="keyword">e</span> 'load data <span class="keyword">local</span> <span class="keyword">infile</span> <span class="string">"/tmp/t.csv"</span>  into <span class="keyword">table</span> huoche fields terminated <span class="keyword">by</span> <span class="string">","</span> lines terminated <span class="keyword">by</span> <span class="string">"\n"</span>'</span><br></pre></td></tr></table></figure>
+<p>ps:每次复制执行的时候总会报错，手动打一次正常，逗我玩吗？　可能中间有某些分割符号隐藏了。。。<br>至此，导入中文，还有小秘密哦。。。哈哈</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/11/Ubuntu 编译安装Ｒ/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu 编译安装Ｒ
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/06/phoenix data process/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">phoenix data process</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="mysql 远程连接、数据库备份、数据导出" data-title="mysql 远程连接、数据库备份、数据导出" data-url="http://needpp.com/2015/01/07/mysql 远程连接、数据库备份、数据导出/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

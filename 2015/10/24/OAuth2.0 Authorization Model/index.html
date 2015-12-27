@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>OAuth2.0 Authorization Model | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="近几天查阅了很多的技术文档、官方非官方的、博客内容、开源项目等 。对OAuth授权模型有了一定的了解，OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。网络上关于OAuth的阐述文章很多也有很多具体的实现，这篇文章的目的是总结一下自己针对这个问题的思考过程以及解决方案，以备不时之需。
+基本概念OAuth2.0是一个开放协议，允许用户让">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OAuth2.0 Authorization Model">
+<meta property="og:url" content="http://needpp.com/2015/10/24/OAuth2.0 Authorization Model/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="近几天查阅了很多的技术文档、官方非官方的、博客内容、开源项目等 。对OAuth授权模型有了一定的了解，OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。网络上关于OAuth的阐述文章很多也有很多具体的实现，这篇文章的目的是总结一下自己针对这个问题的思考过程以及解决方案，以备不时之需。
+基本概念OAuth2.0是一个开放协议，允许用户让">
+<meta property="og:image" content="http://needpp.qiniudn.com/2015/10/24/1b0bd536-7a53-11e5-8db6-bcaec5dfb67f.png">
+<meta property="og:updated_time" content="2015-12-12T03:11:40.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OAuth2.0 Authorization Model">
+<meta name="twitter:description" content="近几天查阅了很多的技术文档、官方非官方的、博客内容、开源项目等 。对OAuth授权模型有了一定的了解，OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。网络上关于OAuth的阐述文章很多也有很多具体的实现，这篇文章的目的是总结一下自己针对这个问题的思考过程以及解决方案，以备不时之需。
+基本概念OAuth2.0是一个开放协议，允许用户让">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-OAuth2.0 Authorization Model" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/24/OAuth2.0 Authorization Model/" class="article-date">
+  	<time datetime="2015-10-23T16:00:00.000Z" itemprop="datePublished">2015-10-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OAuth2.0 Authorization Model
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oauth/">oauth</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近几天查阅了很多的技术文档、官方非官方的、博客内容、开源项目等 。对OAuth授权模型有了一定的了解，OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。网络上关于OAuth的阐述文章很多也有很多具体的实现，这篇文章的目的是总结一下自己针对这个问题的思考过程以及解决方案，以备不时之需。</p>
+<h3 id="基本概念">基本概念</h3><p>OAuth2.0是一个开放协议，允许用户让第三方应用以安全且标准的方式获取该用户在某一网站、移动或桌面应用上存储的私密的资源（如用户个人信息、照片、视频、联系人列表），而无需将用户名和密码提供给第三方应用。 </p>
+<a id="more"></a>
+<ul>
+<li>资源拥有者（resource owner）:能授权访问受保护资源的一个实体，比如一个具体的用户。</li>
+<li>资源服务器（resource server）:存储受保护资源，客户端通过access token请求资源，资源服务器响应受保护资源给客户端；存储着用户的相关信息。</li>
+<li>授权服务器（authorization server）:成功验证资源拥有者并获取授权之后，授权服务器颁发授权令牌（Access Token）给客户端。</li>
+<li>客户端（client）：如新浪微博第三方应用，也可以是它自己的官方应用；其本身不存储资源，而是资源拥有者授权通过后，使用它的授权（授权令牌）访问受保护资源，然后客户端把相应的数据展示出来。<br>注：“客户端”术语不代表任何特定实现（如应用运行在一台服务器、桌面、手机或其他设备）。</li>
+</ul>
+<h3 id="与OAuth1-0_区别">与OAuth1.0 区别</h3><p>OAuth2.0是从2006年开始设计OAuth协议的下一个版本，OAuth2.0同时提供Web，桌面和移动应用程序的支持，并较1.0相比整个授权验证流程更简单更安全。也是新浪、百度、阿里京东、美团等开放平台最主要的用户身份验证和授权方式。<br>OAuth2对比OAuth1，主要改变有下面几点：</p>
+<ul>
+<li>取消繁琐的签名，全部改用HTTPS。</li>
+<li>Access token 从原来的永久令牌变为临时令牌，增加RefreshToken</li>
+<li>取消获取RequestToken的步骤</li>
+<li>提供了多种场景的授权流程</li>
+</ul>
+<h3 id="授权类型">授权类型</h3><p>客户端必须得到用户的授权（authorization grant），才能获得令牌（access token。<br>OAuth2.0协议定义了用于获得授权的四种主要授权类型。</p>
+<ul>
+<li><p>授权码模式 Authorization code<br>标准的Server授权模式，非常适合Server端的Web应用。一旦资源的拥有者授权访问他们的数据之后，他们将会被重定向到Web应用并在URL的查询参数中附带一个授权码（code）。在客户端里，该code用于请求访问令牌（access_token）并且该令牌交换的过程是两个服务端之前完成的，防止其他人甚至是资源拥有者本人得到该令牌。另外，在该授权模式下可以通过refresh_token来刷新令牌以延长访问授权时间。</p>
+</li>
+<li><p>简化模式 Implicit Grant<br>该模式是所有授权模式中最简单的一种，并为运行于浏览器中的脚本应用做了优化。当用户访问该应用时，服务端会立即生成一个新的访问令牌（access_token）并通过URL的#hash段传回客户端。这时，客户端就可以利用JavaScript等将其取出然后请求API接口。该模式不需要授权码（code），当然也不会提供refresh token以获得长期访问的入口。</p>
+</li>
+<li><p>密码模式 Resource Owner Password Credentials<br>这种模式要求用户提供用户名和密码来交换访问令牌（access_token）。该模式仅用于非常值得信任的用户，例如API提供者本人所写的移动应用。虽然用户也要求提供密码，但并不需要存储在设备上。因为初始验证之后，只需将OAuth的令牌记录下来即可。如果用户希望取消授权，因为其真实密码并没有被记录，因此无需修改密码就可以立即取消授权。token本身也只是得到有限的授权，因此相比最传统的username/password授权，该模式依然更为安全。</p>
+</li>
+<li><p>客户端模式 Client Credentials<br>一种基于APP的密钥直接进行授权，因此APP的权限非常大。它适合像数据库或存储服务器这种对API的访问需求</p>
+</li>
+</ul>
+<h3 id="原理过程">原理过程</h3><p>我们这里只描述授权码模式，如下图所示，更过的授权模式的原理可以参考后面的参考资料，这里不再赘述。</p>
+<p><img src="http://needpp.qiniudn.com/2015/10/24/1b0bd536-7a53-11e5-8db6-bcaec5dfb67f.png" alt=""></p>
+<p>大体按照如下流程进行。<br>A. 用户访问客户端后者将前者导向认证服务器。<br>B. 用户选择是否给予客户端授权。<br>C. 假设用户给予授权，认证服务器将用户导向客户端事先指定的”重定向URI”（redirection URI），同时附上一个授权码。<br>D. 客户端收到授权码，附上早先的”重定向URI”，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见。<br>E. 认证服务器核对了授权码和重定向URI，确认无误后，向客户端发送访问令牌（access token）和更新令牌（refresh token）。</p>
+<h3 id="解决方案">解决方案</h3><p>OAuth2.0 只是定义了这么一种规范和标准，来满足授权的安全性以及通用性。如果自己重新造轮子实现的话将是一个不了的任务。<br>经过调研分析，有几种不错的解决方案。</p>
+<ul>
+<li><p>Oltu +  Shiro<br>二者都是apache的顶级项目，其中<a href="oltu.apache.org">Oltu</a>是OAuth2.0的Java实现。<a href="shiro.apache.org">Shiro</a>是Java的一个安全框架。二者结合起来比较方便。</p>
+</li>
+<li><p>Spring -security-oauth<br>代码托管在<a href="https://github.com/spring-projects/spring-security-oauth" target="_blank" rel="external">github</a> ,安全性能比前者要高，但是门槛也比较高。</p>
+</li>
+</ul>
+<h3 id="接下来计划">接下来计划</h3><ul>
+<li>下载oltu demo并根据官方文档进行快速理解与配置</li>
+<li>参考前期收集的资料对oltu与shiro进行整合。</li>
+<li>搭建环境并准备后期架构设计和数据库设计。</li>
+</ul>
+<h3 id="可能问题">可能问题</h3><ul>
+<li>这些开源项目使用maven进行管理，需要花时间学习maven</li>
+<li>学习shiro原理需要花费一定时间，之前没有考虑到，需要尽量加快步伐</li>
+<li>整合过程中的不确定性问题。</li>
+</ul>
+<h3 id="参考资料">参考资料</h3><p>OAuth基本概述<br><a href="http://www.cnblogs.com/Irving/p/4134629.html" target="_blank" rel="external">http://www.cnblogs.com/Irving/p/4134629.html</a><br>OAuth 2.0 标准<br><a href="http://oauthlib.readthedocs.org/en/latest/oauth2/oauth2.html" target="_blank" rel="external">http://oauthlib.readthedocs.org/en/latest/oauth2/oauth2.html</a><br>理解OAuth 2.0<br><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html</a><br>OAuth2授权原理<br><a href="http://www.cnblogs.com/neutra/archive/2012/07/26/2609300.html" target="_blank" rel="external">http://www.cnblogs.com/neutra/archive/2012/07/26/2609300.html</a><br>OAuth 2.0模式<br><a href="http://www.dannysite.com/blog/?tag=204" target="_blank" rel="external">http://www.dannysite.com/blog/?tag=204</a><br>OAuth 2.0安全案例回顾<br><a href="http://drops.wooyun.org/papers/598" target="_blank" rel="external">http://drops.wooyun.org/papers/598</a><br>OAuth 认证流程<br><a href="http://blog.sina.com.cn/s/blog_4adc4b090102uxrt.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4adc4b090102uxrt.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/14/others/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          others
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/01/Geolife on LetZink/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GeoLife Model on LetZink</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="OAuth2.0 Authorization Model" data-title="OAuth2.0 Authorization Model" data-url="http://needpp.com/2015/10/24/OAuth2.0 Authorization Model/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ubuntu 使用nginx部署flask应用 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前博客部署到新浪，因为没有备案需要进行海外中转。速度慢，还经常宕机。。。现金迁移至linode。
+准备sudo apt-get install python-setuptoolssudo easy_install pipsudo pip install virtualenvsudo apt-get install build-essential python python-dev# instal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 使用nginx部署flask应用">
+<meta property="og:url" content="http://needpp.com/2014/12/22/Ubuntu 使用nginx部署flask应用/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="之前博客部署到新浪，因为没有备案需要进行海外中转。速度慢，还经常宕机。。。现金迁移至linode。
+准备sudo apt-get install python-setuptoolssudo easy_install pipsudo pip install virtualenvsudo apt-get install build-essential python python-dev# instal">
+<meta property="og:updated_time" content="2015-12-12T03:13:03.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu 使用nginx部署flask应用">
+<meta name="twitter:description" content="之前博客部署到新浪，因为没有备案需要进行海外中转。速度慢，还经常宕机。。。现金迁移至linode。
+准备sudo apt-get install python-setuptoolssudo easy_install pipsudo pip install virtualenvsudo apt-get install build-essential python python-dev# instal">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Ubuntu 使用nginx部署flask应用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/22/Ubuntu 使用nginx部署flask应用/" class="article-date">
+  	<time datetime="2014-12-21T16:00:00.000Z" itemprop="datePublished">2014-12-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu 使用nginx部署flask应用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/">flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前博客部署到新浪，因为没有备案需要进行海外中转。速度慢，还经常宕机。。。现金迁移至linode。</p>
+<h3 id="准备">准备</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> python-setuptools</span><br><span class="line">sudo easy_install pip</span><br><span class="line">sudo pip <span class="keyword">install</span> virtualenv</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> <span class="keyword">build</span>-essential python python-dev</span><br><span class="line"># <span class="keyword">install</span> nginx</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> nginx</span><br><span class="line">Nginx是一个提供静态文件访问的web服务，然而，它不能直接执行托管Python应用程序，而uWSGI解决了这个问题。让我们先安装uWSGI，稍候再配置Nginx和uWSGI之间的交互。</span><br><span class="line">sudo pip <span class="keyword">install</span> uwsgi</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="示例代码">示例代码</h3><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">构建站点文件，或者在其他目录下建立目录，然后添加符号链接到www下亦可</span><br><span class="line">sudo mkdir <span class="regexp">/var/</span>www/mysite</span><br><span class="line">或者 sudo ln -s <span class="regexp">/home/</span>scut1<span class="regexp">/mysite  /</span>var<span class="regexp">/www/</span>mysite</span><br><span class="line"></span><br><span class="line">创建完成之后将文件所有者改为非root用户</span><br><span class="line">chown -R <span class="string">scut1:</span>scut1 <span class="regexp">/home/</span>scut1/mysite</span><br></pre></td></tr></table></figure>
+<p>创建并激活一个虚拟环境，在其中安装Flask：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">cd <span class="regexp">/var/</span>www/mysite</span><br><span class="line">virtualenv venv</span><br><span class="line">. venv<span class="regexp">/bin/</span>activate</span><br><span class="line">pip install flask</span><br></pre></td></tr></table></figure>
+<p>使用下面的代码创建hello.py文件：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="decorator">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hello World!"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<p>然后使用 <code>python hello.py</code> 就可以启动应用，通过<a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a> 进行访问。如果不想带个端口做个尾巴 需要使用nginx进行端口转发</p>
+<h3 id="配置nginx">配置nginx</h3><p>首先删除掉Nginx的默认配置文件：<br><code>sudo rm /etc/nginx/sites-enabled/default</code></p>
+<p>创建一个我们应用使用的新配置文件 <code>/var/www/mysite/mysite_nginx.conf</code></p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="title">server</span> &#123;</span><br><span class="line">    <span class="title">listen</span>      <span class="number">80</span>;</span><br><span class="line">    <span class="title">server_name</span> localhost;   <span class="comment">###可以换成自己的域名，只要解析到这台主机的ip即可</span></span><br><span class="line">    <span class="title">charset</span>     utf-<span class="number">8</span>;</span><br><span class="line">    <span class="title">client_max_body_size</span> <span class="number">75M</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title">location</span> / &#123; <span class="title">try_files</span> <span class="variable">$uri</span> <span class="variable">@yourapplication</span>; &#125;</span><br><span class="line">    <span class="title">location</span> <span class="variable">@yourapplication</span> &#123;</span><br><span class="line">        <span class="title">include</span> uwsgi_params;</span><br><span class="line">        <span class="title">uwsgi_pass</span> <span class="url">unix:/var/www/mysite/mysite_uwsgi.sock</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将刚建立的配置文件使用符号链接到Nginx配置文件文件夹中，重启Nginx：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">sudo ln -s /<span class="keyword">var</span>/www/mysitemysite_nginx.<span class="keyword">conf</span> /etc/nginx/<span class="keyword">conf</span>.<span class="keyword">d</span>/</span><br><span class="line">sudo /etc/init.<span class="keyword">d</span>/nginx restart</span><br></pre></td></tr></table></figure>
+<h3 id="配置uwsgi">配置uwsgi</h3><p>遇到502 Bad GateWay这是正常的，因为没有配置nginx与uwsgi之间的通信。<br>创建一个新的uWSGI配置文件/var/www/mysite/mysite_uwsgi.ini：</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="title">[uwsgi]</span></span><br><span class="line"><span class="comment">#application's base folder</span></span><br><span class="line"><span class="setting">base = <span class="value">/var/www/mysite</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">#python module to import</span></span><br><span class="line"><span class="setting">app = <span class="value">hello</span></span></span><br><span class="line"><span class="setting">module = <span class="value">%(app)</span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">home = <span class="value">%(base)/venv</span></span></span><br><span class="line"><span class="setting">pythonpath = <span class="value">%(base)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">#socket file's location</span></span><br><span class="line"><span class="setting">socket = <span class="value">/var/www/mysite/%n.sock</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">#permissions for the socket file</span></span><br><span class="line"><span class="setting">chmod-socket    = <span class="value"><span class="number">666</span></span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">#the variable that holds a flask application inside the module imported at line #6</span></span><br><span class="line"><span class="setting">callable = <span class="value">app</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">#location of log files</span></span><br><span class="line"><span class="setting">logto = <span class="value">/var/log/uwsgi/%n.log</span></span></span><br></pre></td></tr></table></figure>
+<p>创建一个新文件夹存放uWSGI日志，更改文件夹的所有权：</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">sudo <span class="keyword">mkdir</span> -p /<span class="keyword">var</span>/<span class="keyword">log</span>/uwsgi</span><br><span class="line">sudo chown -R scut1:scut1 /<span class="keyword">var</span>/<span class="keyword">log</span>/uwsgi</span><br></pre></td></tr></table></figure>
+<h3 id="完成">完成</h3><p>至此，配置完成，可以使用下面命令进行访问。<br><code>uwsgi --ini /var/www/mysite/mysite_uwsgi.ini</code><br>接下来访问你的服务器，现在Nginx可以连接到uWSGI进程了.</p>
+<h3 id="wait…-">wait….</h3><p>等等，我们发现使用终端进行启动之后不能关闭，因为这样服务就停止了，那怎么办？<br>后台挂起即可后面的<code>&amp;</code>不能少,原因自行查阅。</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">nohup uwsgi --ini <span class="regexp">/var/</span>www<span class="regexp">/mysite/my</span>site_uwsgi.ini &amp;</span><br></pre></td></tr></table></figure>
+<h3 id="遇到问题">遇到问题</h3><p>在配置个人博客中遇到关于mysqldb无法引入的问题，但是在外部环境中python-mysql模块是正常安装的。查阅日志发现在使用virtualenv建立的隔离环境中没有该模块，重新安装即可。</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">sorry , <span class="tag">i</span> forgot it</span><br></pre></td></tr></table></figure>
+<h3 id="参考">参考</h3><p><a href="http://www.oschina.net/translate/serving-flask-with-nginx-on-ubuntu?cmp" target="_blank" rel="external">http://www.oschina.net/translate/serving-flask-with-nginx-on-ubuntu?cmp</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/23/友情链接分享/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          友情链接分享
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/17/关于套牌车数据分布式存储方案/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于套牌车数据分布式存储方案</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Ubuntu 使用nginx部署flask应用" data-title="Ubuntu 使用nginx部署flask应用" data-url="http://needpp.com/2014/12/22/Ubuntu 使用nginx部署flask应用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>十分钟搭建个人博客 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="无需过多关注与页面设计，只需要关注与内容的编写。采用markdown编写，然后解析成html，再有主题渲染。托管到静态空间，ok。
+准备工具
+nodejs安装包
+hexo
+git
+
+配置nodejs在官网下载二进制安装包，下载适合自己系统的对应安装包，我这里是linux64bit。下载地址  https://nodejs.org/download/下面操作在shell终端进行##解压tar -zx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十分钟搭建个人博客">
+<meta property="og:url" content="http://needpp.com/2015/06/30/十分钟搭建个人博客/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="无需过多关注与页面设计，只需要关注与内容的编写。采用markdown编写，然后解析成html，再有主题渲染。托管到静态空间，ok。
+准备工具
+nodejs安装包
+hexo
+git
+
+配置nodejs在官网下载二进制安装包，下载适合自己系统的对应安装包，我这里是linux64bit。下载地址  https://nodejs.org/download/下面操作在shell终端进行##解压tar -zx">
+<meta property="og:image" content="http://7punic.com1.z0.glb.clouddn.com/0881f660-33aa-11e5-8e28-4b1299df4838.png">
+<meta property="og:image" content="http://7punic.com1.z0.glb.clouddn.com/e6126410-33aa-11e5-8e28-4b1299df4838.png">
+<meta property="og:updated_time" content="2015-12-14T09:54:14.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十分钟搭建个人博客">
+<meta name="twitter:description" content="无需过多关注与页面设计，只需要关注与内容的编写。采用markdown编写，然后解析成html，再有主题渲染。托管到静态空间，ok。
+准备工具
+nodejs安装包
+hexo
+git
+
+配置nodejs在官网下载二进制安装包，下载适合自己系统的对应安装包，我这里是linux64bit。下载地址  https://nodejs.org/download/下面操作在shell终端进行##解压tar -zx">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-十分钟搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/30/十分钟搭建个人博客/" class="article-date">
+  	<time datetime="2015-06-29T16:00:00.000Z" itemprop="datePublished">2015-06-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      十分钟搭建个人博客
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/myblog/">myblog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/share/">share</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>无需过多关注与页面设计，只需要关注与内容的编写。采用markdown编写，然后解析成html，再有主题渲染。托管到静态空间，ok。</p>
+<h3 id="准备工具">准备工具</h3><ul>
+<li>nodejs安装包</li>
+<li>hexo</li>
+<li>git</li>
+</ul>
+<h3 id="配置nodejs">配置nodejs</h3><p>在官网下载二进制安装包，下载适合自己系统的对应安装包，我这里是linux64bit。<br>下载地址  <a href="https://nodejs.org/download/" target="_blank" rel="external">https://nodejs.org/download/</a><br>下面操作在shell终端进行<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##解压</span></span><br><span class="line">tar -zxvf  nodejs-<span class="number">64</span>.tar.gz </span><br><span class="line"><span class="comment">##添加到环境变量 sudo vim /etc/profile</span></span><br><span class="line">在配置文件中添加这两行，这里的路径名称根据实际情况进行更改,然后保存并且退出</span><br><span class="line"><span class="built_in">export</span> NODEJS_HOME=/home/spark/soft/nodejs</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$NODEJS_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment">##对更改的配置文件 使之重新生效</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>在终端输入如下命令， 检查是否安装成功。<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">spark<span class="variable">@master</span><span class="symbol">:~/soft</span><span class="variable">$ </span>node -v</span><br><span class="line">v<span class="number">0</span>.<span class="number">12.7</span></span><br><span class="line">spark<span class="variable">@master</span><span class="symbol">:~/soft</span><span class="variable">$ </span>npm -v</span><br><span class="line"><span class="number">1.3</span>.<span class="number">10</span></span><br><span class="line">spark<span class="variable">@master</span><span class="symbol">:~/soft</span>$</span><br></pre></td></tr></table></figure></p>
+<p>至此，nodejs安装完成。 </p>
+<a id="more"></a>
+<h3 id="安装hexo">安装hexo</h3><p>关于hexo的文档很多，可以参考官网。<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">https://hexo.io/zh-cn/</a><br>这里的具体步骤可以参考下面：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#全局安装hexo command  ，可能会使用sudo权限</span></span><br><span class="line">sudo npm install hexo-cli -g</span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化自己的博客目录</span></span><br><span class="line">hexo init myblog</span><br><span class="line"></span><br><span class="line"><span class="comment">#进入到myblog目录,进行依赖包的安装</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></p>
+<p>上面步骤完成之后，我们可以看到myblog下的目录结构是这样的</p>
+<p><img src="http://7punic.com1.z0.glb.clouddn.com/0881f660-33aa-11e5-8e28-4b1299df4838.png" alt=""></p>
+<p>其中_configl.xml 是主要的配置文件，node_modules下是自动安装的依赖包。这些依赖的包的依赖关系由package.json来指定。scaffolds下是每种布局新建时候的模板。soucece下是我们真正负责维护的markdown文件，最终由这些文件来生成静态页面。</p>
+<p>###生成静态博客<br>切换到myblog的根目录，执行生成静态博客的命令。<br><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="title">hexo</span> g</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7punic.com1.z0.glb.clouddn.com/e6126410-33aa-11e5-8e28-4b1299df4838.png" alt=""></p>
+<p>会在public目录下生成整个静态博客的页面。此时可以在本地启动服务，然后在浏览器进行访问。</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="title">hexo</span> s</span><br></pre></td></tr></table></figure>
+<p>执行完之后，然后在浏览器就可以看到自己的博客了。。。</p>
+<h3 id="关于主题">关于主题</h3><p>主题是可以切换的，只需要在 _config.yml 里面的主题目录进行修改你想要设置的主题，需要保证名字和theme下的名字一样。</p>
+<h3 id="关于自动部署">关于自动部署</h3><p>托管到github，在上面建立一个自己用户名+github.io 的仓库，比如xxx.github.io.<br>然后在_config.yml 的deploy节点进行仓库地址的添加。<br>这里需要将xxx替换成自己的用户名<br><figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repository</span>: <span class="attribute">https</span>:<span class="comment">//github.com/<span class="label">xxx/myblog.git</span></span></span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure></p>
+<h3 id="附录">附录</h3><p>我的配置<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"># Hexo Configuration</span><br><span class="line">## Docs: http://hexo.io/docs/configuration.html</span><br><span class="line">## Source: https://github.com/hexojs/hexo/</span><br><span class="line"># Site</span><br><span class="line">title: Thinkml's blog</span><br><span class="line">subtitle: happy wife, happy life...</span><br><span class="line">description: happy wife, happy life...</span><br><span class="line">author: thinkml</span><br><span class="line">language:</span><br><span class="line">timezone:</span><br><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, <span class="operator"><span class="keyword">set</span> <span class="keyword">url</span> <span class="keyword">as</span> <span class="string">'http://yoursite.com/child'</span> <span class="keyword">and</span> root <span class="keyword">as</span> <span class="string">'/child/'</span></span><br><span class="line"><span class="keyword">url</span>: <span class="keyword">http</span>://needpp.com</span><br><span class="line">root: /</span><br><span class="line">permalink: :<span class="keyword">year</span>/:<span class="keyword">month</span>/:<span class="keyword">day</span>/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line"># <span class="keyword">Directory</span></span><br><span class="line">source_dir: <span class="keyword">source</span></span><br><span class="line">public_dir: <span class="keyword">public</span></span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br><span class="line"># Writing</span><br><span class="line">new_post_name: :title.md # <span class="keyword">File</span> <span class="keyword">name</span> <span class="keyword">of</span> <span class="keyword">new</span> posts</span><br><span class="line">default_layout: post</span><br><span class="line">titlecase: <span class="literal">false</span> # Transform title <span class="keyword">into</span> titlecase</span><br><span class="line">external_link: <span class="literal">true</span> # <span class="keyword">Open</span> <span class="keyword">external</span> links <span class="keyword">in</span> <span class="keyword">new</span> tab</span><br><span class="line">filename_case: <span class="number">0</span></span><br><span class="line">render_drafts: <span class="literal">false</span></span><br><span class="line">post_asset_folder: <span class="literal">false</span></span><br><span class="line">relative_link: <span class="literal">false</span></span><br><span class="line">future: <span class="literal">true</span></span><br><span class="line">highlight:</span><br><span class="line">  <span class="keyword">enable</span>: <span class="literal">true</span></span><br><span class="line">  line_number: <span class="literal">false</span></span><br><span class="line">  auto_detect: <span class="literal">true</span></span><br><span class="line">  tab_replace:</span><br><span class="line"># <span class="keyword">Category</span> &amp; Tag</span><br><span class="line">default_category: uncategorized</span><br><span class="line">category_map:</span><br><span class="line">tag_map:</span><br><span class="line"># <span class="built_in">Date</span> / <span class="keyword">Time</span> <span class="keyword">format</span></span><br><span class="line">## Hexo uses Moment.js <span class="keyword">to</span> <span class="keyword">parse</span> <span class="keyword">and</span> display <span class="built_in">date</span></span><br><span class="line">## You can customize the <span class="built_in">date</span> <span class="keyword">format</span> <span class="keyword">as</span> defined <span class="keyword">in</span></span><br><span class="line">## <span class="keyword">http</span>://momentjs.com/docs/#/displaying/<span class="keyword">format</span>/</span><br><span class="line"><span class="keyword">date_format</span>: YYYY-MM-DD</span><br><span class="line"><span class="keyword">time_format</span>: HH:mm:ss</span><br><span class="line"># Pagination</span><br><span class="line">## <span class="keyword">Set</span> per_page <span class="keyword">to</span> <span class="number">0</span> <span class="keyword">to</span> <span class="keyword">disable</span> pagination</span><br><span class="line">per_page: <span class="number">10</span></span><br><span class="line">pagination_dir: page</span><br><span class="line"># Extensions</span><br><span class="line">## Plugins: <span class="keyword">http</span>://hexo.io/plugins/</span><br><span class="line">plugins:</span><br><span class="line">- hexo-generator-feed</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line">## Themes: <span class="keyword">http</span>://hexo.io/themes/</span><br><span class="line">theme: yilia</span><br><span class="line"># Deployment</span><br><span class="line">## Docs: <span class="keyword">http</span>://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">    <span class="keyword">type</span>: git</span><br><span class="line">    message: <span class="string">""</span></span><br><span class="line">    repo: </span><br><span class="line">        github: git@github.com:dcycome/dcycome.github.io.git,<span class="keyword">master</span></span><br><span class="line">        gitcafe: git@gitcafe.com:thinkml/myblog.git,gitcafe-pages</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="更新（快速配置方式）">更新（快速配置方式）</h3><p>请参考<a href="https://nodejs.org/en/download/package-manager/" target="_blank" rel="external">这里</a>.</p>
+<p>NOTE: If you are using Ubuntu Precise or Debian Wheezy, you might want to read about running Node.js &gt;= 4.x on older distros.</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">curl -sL http<span class="variable">s:</span>//<span class="keyword">deb</span>.nodesource.<span class="keyword">com</span>/setup_4.<span class="keyword">x</span> | sudo -E bash -</span><br><span class="line">sudo apt-<span class="built_in">get</span> install -<span class="keyword">y</span> nodejs</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/30/起风了/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          起风了
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/29/临时存储/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">临时存储</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="十分钟搭建个人博客" data-title="十分钟搭建个人博客" data-url="http://needpp.com/2015/06/30/十分钟搭建个人博客/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

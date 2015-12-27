@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>南方电网用电时间序列分析 | Thinkml&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="总则我们进行预测的总的原则是：认识事物的发展变化规律，利用规律的必然性，是进行科学预测所应遵循的总的原则。这个总原则实际上就是事物发展的
+
+“惯性”原则——事物变化发展的延续性；
+“类推”原则——事物发展的类似性；
+“相关”原则——事物的变化发展是相互联系的；
+“概率”原则——事物发展的推断预测结果能以较大概率出现，则结果成立、可用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="南方电网用电时间序列分析">
+<meta property="og:url" content="http://needpp.com/2014/11/06/南方电网用电时间序列分析/index.html">
+<meta property="og:site_name" content="Thinkml's blog">
+<meta property="og:description" content="总则我们进行预测的总的原则是：认识事物的发展变化规律，利用规律的必然性，是进行科学预测所应遵循的总的原则。这个总原则实际上就是事物发展的
+
+“惯性”原则——事物变化发展的延续性；
+“类推”原则——事物发展的类似性；
+“相关”原则——事物的变化发展是相互联系的；
+“概率”原则——事物发展的推断预测结果能以较大概率出现，则结果成立、可用">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/11/06/ac33f891-65c1-11e4-a7aa-91dc75eb35eb.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/11/06/ac3368a1-65c1-11e4-88e8-099ee4498c3d.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/11/06/ac7fcaee-65c1-11e4-8d23-099ee4498c3d.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/11/06/ac5b2680-65c1-11e4-8ea6-099ee4498c3d.png">
+<meta property="og:image" content="http://needpp.qiniudn.com/2014/11/06/cf46fa82-65c1-11e4-abb4-91dc75eb35eb.png">
+<meta property="og:updated_time" content="2015-12-12T03:14:44.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="南方电网用电时间序列分析">
+<meta name="twitter:description" content="总则我们进行预测的总的原则是：认识事物的发展变化规律，利用规律的必然性，是进行科学预测所应遵循的总的原则。这个总原则实际上就是事物发展的
+
+“惯性”原则——事物变化发展的延续性；
+“类推”原则——事物发展的类似性；
+“相关”原则——事物的变化发展是相互联系的；
+“概率”原则——事物发展的推断预测结果能以较大概率出现，则结果成立、可用">
+  
+    <link rel="alternative" href="/atom.xml" title="Thinkml&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">thinkml</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">happy wife, happy life...</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/life">随笔</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/2014/" style="font-size: 10px;">2014</a> <a href="/tags/2015/" style="font-size: 10px;">2015</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/about/" style="font-size: 10px;">about</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/boost/" style="font-size: 10px;">boost</a> <a href="/tags/car/" style="font-size: 10px;">car</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/d3/" style="font-size: 10px;">d3</a> <a href="/tags/dm/" style="font-size: 10px;">dm</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/friend/" style="font-size: 10px;">friend</a> <a href="/tags/gbrt/" style="font-size: 10px;">gbrt</a> <a href="/tags/git/" style="font-size: 12px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gps/" style="font-size: 10px;">gps</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 12px;">hbase</a> <a href="/tags/hive/" style="font-size: 12px;">hive</a> <a href="/tags/ijcai/" style="font-size: 10px;">ijcai</a> <a href="/tags/ip/" style="font-size: 10px;">ip</a> <a href="/tags/life/" style="font-size: 18px;">life</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/maven/" style="font-size: 14px;">maven</a> <a href="/tags/me/" style="font-size: 12px;">me</a> <a href="/tags/ml/" style="font-size: 20px;">ml</a> <a href="/tags/model/" style="font-size: 10px;">model</a> <a href="/tags/myblog/" style="font-size: 10px;">myblog</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/nosql/" style="font-size: 10px;">nosql</a> <a href="/tags/oauth/" style="font-size: 10px;">oauth</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/others/" style="font-size: 12px;">others</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/phoenix/" style="font-size: 12px;">phoenix</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/q/" style="font-size: 10px;">q</a> <a href="/tags/share/" style="font-size: 12px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 14px;">spark</a> <a href="/tags/spss/" style="font-size: 10px;">spss</a> <a href="/tags/ss/" style="font-size: 10px;">ss</a> <a href="/tags/temp/" style="font-size: 10px;">temp</a> <a href="/tags/tmall/" style="font-size: 10px;">tmall</a> <a href="/tags/tools/" style="font-size: 20px;">tools</a> <a href="/tags/ubuntu/" style="font-size: 16px;">ubuntu</a> <a href="/tags/weka/" style="font-size: 16px;">weka</a> <a href="/tags/win/" style="font-size: 10px;">win</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://me.needpp.com">thinkml&#39;s blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">thinkml</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">thinkml</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">happy wife, happy life...</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/life">随笔</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/dcycome" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/SupreDream" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-南方电网用电时间序列分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/06/南方电网用电时间序列分析/" class="article-date">
+  	<time datetime="2014-11-05T16:00:00.000Z" itemprop="datePublished">2014-11-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      南方电网用电时间序列分析
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spss/">spss</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="总则">总则</h3><p>我们进行预测的总的原则是：认识事物的发展变化规律，利用规律的必然性，是进行科学预测所应遵循的总的原则。<br>这个总原则实际上就是事物发展的</p>
+<ul>
+<li>“惯性”原则——事物变化发展的延续性；</li>
+<li>“类推”原则——事物发展的类似性；</li>
+<li>“相关”原则——事物的变化发展是相互联系的；</li>
+<li>“概率”原则——事物发展的推断预测结果能以较大概率出现，则结果成立、可用</li>
+</ul>
+<a id="more"></a>
+<h3 id="观察问题">观察问题</h3><ul>
+<li>序列是否在固定水平上下变动？</li>
+<li>此水平是否也在变动？</li>
+<li>是否有某种上升或下降的趋势呢？</li>
+<li>是否存在有季节性的模式？</li>
+<li>是否季节性的模式也在变更呢？</li>
+<li>是否存在周期性规律和模式？</li>
+</ul>
+<h3 id="考虑因素">考虑因素</h3><ul>
+<li>长期趋势</li>
+<li>季节性变动</li>
+<li>周期性变动</li>
+<li>随机影响</li>
+</ul>
+<h3 id="预测模型（方法）">预测模型（方法）</h3><ul>
+<li>指数平滑法<br><strong>描述时间序列数据的变化规律和行为，不去试图解释和理解这种变化的原因</strong>。例如：您可能发现在过去的一年里，三月和九月都会出现销售的高峰，您可能希望继续保持这样，尽管您不知道为什么。</li>
+<li>ARIMA<br>ARIMA模型全称为<code>差分自回归移动平均模型</code>，即是<code>Autoregressive Integrated Moving Average Model</code><br>描述时间序列数据的变化规律和行为，它允许模型中包含趋势变动、季节变动、循环变动和随机波动等综合因素影响。具有较高的预测精度，可以把握过去数据变动模式，有助于解释预测变动规律，回答为什么这样。</li>
+</ul>
+<h3 id="使用SPSS进行分析">使用SPSS进行分析</h3><ul>
+<li>选择第一个个案的数据，存储在<code>t1.sav</code>中</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/11/06/ac33f891-65c1-11e4-a7aa-91dc75eb35eb.png" alt=""></p>
+<ul>
+<li>定义日期</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/11/06/ac3368a1-65c1-11e4-88e8-099ee4498c3d.png" alt=""></p>
+<p>得到从201001到201410月的数据</p>
+<ul>
+<li>创建时序图<br>得到一个较为直观的有功功率的趋势，便于选择较好的数据模型</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/11/06/ac7fcaee-65c1-11e4-8d23-099ee4498c3d.png" alt=""></p>
+<p>此序列整体呈现一个下降的趋势,无明显周期性变化，在每年的3-5月月份左右变化较大出现用电高峰。</p>
+<ul>
+<li><p>尝试模型<br>当对数据由一定的了解之后开始尝试不同模型的构建，spss提供三大类预测方法.</p>
+<ul>
+<li>专家建模</li>
+<li>指数平滑<br>指数平滑法有助于预测存在趋势和/或季节的序列，此处数据同时 体现上述两种特征。创建最适当的指数平滑模型包括确定模型类 型（此模型是否需要包含趋势和/或季节），然后获取最适合选 定模型的参数。</li>
+<li>ARIMA<br>ARIMA模型是自回归AR和移动平均MA加上差分考虑，ARIMA模型比较复杂，原理还不是非常明白。不过依然可以借助spss可是尝试不同参数看到应用效果。</li>
+</ul>
+</li>
+<li><p>使用简单模型进行的拟合</p>
+</li>
+</ul>
+<p><img src="http://needpp.qiniudn.com/2014/11/06/ac5b2680-65c1-11e4-8ea6-099ee4498c3d.png" alt=""></p>
+<p>查看摘要，R方值0.76 较好的拟合效果</p>
+<p><img src="http://needpp.qiniudn.com/2014/11/06/cf46fa82-65c1-11e4-abb4-91dc75eb35eb.png" alt=""></p>
+<h3 id="后续…">后续…</h3><h3 id="参考资料">参考资料</h3><ul>
+<li><a href="http://shenhaolaoshi.blog.sohu.com/137698400.html" target="_blank" rel="external">http://shenhaolaoshi.blog.sohu.com/137698400.html</a></li>
+<li><a href="http://shenhaolaoshi.blog.sohu.com/137715309.html" target="_blank" rel="external">http://shenhaolaoshi.blog.sohu.com/137715309.html</a></li>
+<li><a href="http://shenhaolaoshi.blog.sohu.com/138463365.html" target="_blank" rel="external">http://shenhaolaoshi.blog.sohu.com/138463365.html</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/21/spark/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          spark
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/02/Coding 告别单身/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Coding 告别单身</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="南方电网用电时间序列分析" data-title="南方电网用电时间序列分析" data-url="http://needpp.com/2014/11/06/南方电网用电时间序列分析/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"needpp"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 thinkml
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56213181-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
